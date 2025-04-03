@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<footer class="bg-light text-dark py-4 mt-4 border-top">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-4 mb-2">
+                <a href="{% url 'about_us' %}" class="text-decoration-none text-dark me-3">{% trans "Про нас та гарантії" %}</a>
+            </div>
+            <div class="col-md-4 mb-2">
+                <p class="mb-0">&copy; {% trans "2024 Інтернет-магазин. Всі права захищені." %}</p>
+            </div>
+            <div class="col-md-4 mb-2">
+                <span class="d-flex justify-content-center">
+                    <p class="mb-0 me-3">{% trans "Наши социальные сети" %}</p>
+                    <!-- Социальные иконки -->
+                    <a href="https://t.me/MSKShopOfficialBot" class="text-dark me-3" target="_blank">
+                        <i class="bi bi-telegram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@yourusername" class="text-dark me-3" target="_blank">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -139,18 +139,7 @@
     </div>
 </div>
 
-<footer class="bg-light text-dark py-4 mt-4 border-top">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-6 mb-2">
-                <a href="{% url 'about_us' %}" class="text-decoration-none text-dark me-3">{% trans "Про нас та гарантії" %}</a>
-            </div>
-            <div class="col-md-6">
-                <p class="mb-0">&copy; {% trans "2024 Інтернет-магазин. Всі права захищені." %}</p>
-            </div>
-        </div>
-    </div>
-</footer>
+{% include "footer.html" %}
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

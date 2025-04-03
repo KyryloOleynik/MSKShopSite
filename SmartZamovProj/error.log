@@ -7325,3 +7325,404 @@ SyntaxError: cannot assign to attribute here. Maybe you meant '==' instead of '=
 [2025-04-03 09:26:40 +0000] [174895] [INFO] Booting worker with pid: 174895
 [2025-04-03 09:26:40 +0000] [174896] [INFO] Booting worker with pid: 174896
 [2025-04-03 09:26:40 +0000] [174897] [INFO] Booting worker with pid: 174897
+[2025-04-03 09:53:53 +0000] [174895] [INFO] Worker exiting (pid: 174895)
+[2025-04-03 09:53:53 +0000] [174896] [INFO] Worker exiting (pid: 174896)
+[2025-04-03 09:53:53 +0000] [174897] [INFO] Worker exiting (pid: 174897)
+[2025-04-03 09:53:53 +0000] [174892] [INFO] Handling signal: term
+[2025-04-03 09:53:53 +0000] [174892] [ERROR] Worker (pid:174897) was sent SIGTERM!
+[2025-04-03 09:53:53 +0000] [174892] [ERROR] Worker (pid:174895) was sent SIGTERM!
+[2025-04-03 09:53:53 +0000] [174892] [ERROR] Worker (pid:174896) was sent SIGTERM!
+[2025-04-03 09:53:53 +0000] [174892] [INFO] Shutting down: Master
+[2025-04-03 09:53:53 +0000] [176010] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 09:53:53 +0000] [176010] [INFO] Listening at: http://127.0.0.1:8000 (176010)
+[2025-04-03 09:53:53 +0000] [176010] [INFO] Using worker: sync
+[2025-04-03 09:53:53 +0000] [176011] [INFO] Booting worker with pid: 176011
+[2025-04-03 09:53:53 +0000] [176012] [INFO] Booting worker with pid: 176012
+[2025-04-03 09:53:53 +0000] [176013] [INFO] Booting worker with pid: 176013
+[2025-04-03 09:55:01 +0000] [176010] [INFO] Handling signal: term
+[2025-04-03 09:55:01 +0000] [176012] [INFO] Worker exiting (pid: 176012)
+[2025-04-03 09:55:01 +0000] [176013] [INFO] Worker exiting (pid: 176013)
+[2025-04-03 09:55:01 +0000] [176011] [INFO] Worker exiting (pid: 176011)
+[2025-04-03 09:55:02 +0000] [176010] [INFO] Shutting down: Master
+[2025-04-03 09:55:03 +0000] [176067] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 09:55:03 +0000] [176067] [INFO] Listening at: http://127.0.0.1:8000 (176067)
+[2025-04-03 09:55:03 +0000] [176067] [INFO] Using worker: sync
+[2025-04-03 09:55:03 +0000] [176068] [INFO] Booting worker with pid: 176068
+[2025-04-03 09:55:03 +0000] [176069] [INFO] Booting worker with pid: 176069
+[2025-04-03 09:55:03 +0000] [176070] [INFO] Booting worker with pid: 176070
+[2025-04-03 09:55:53 +0000] [176069] [INFO] Worker exiting (pid: 176069)
+[2025-04-03 09:55:53 +0000] [176067] [INFO] Handling signal: term
+[2025-04-03 09:55:53 +0000] [176068] [INFO] Worker exiting (pid: 176068)
+[2025-04-03 09:55:53 +0000] [176070] [INFO] Worker exiting (pid: 176070)
+[2025-04-03 09:55:53 +0000] [176067] [ERROR] Worker (pid:176069) was sent SIGTERM!
+[2025-04-03 09:55:53 +0000] [176067] [INFO] Shutting down: Master
+[2025-04-03 09:55:53 +0000] [176117] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 09:55:53 +0000] [176117] [INFO] Listening at: http://127.0.0.1:8000 (176117)
+[2025-04-03 09:55:53 +0000] [176117] [INFO] Using worker: sync
+[2025-04-03 09:55:53 +0000] [176118] [INFO] Booting worker with pid: 176118
+[2025-04-03 09:55:53 +0000] [176119] [INFO] Booting worker with pid: 176119
+[2025-04-03 09:55:54 +0000] [176120] [INFO] Booting worker with pid: 176120
+[2025-04-03 09:56:16 +0000] [176118] [INFO] Worker exiting (pid: 176118)
+[2025-04-03 09:56:16 +0000] [176119] [INFO] Worker exiting (pid: 176119)
+[2025-04-03 09:56:16 +0000] [176117] [INFO] Handling signal: term
+[2025-04-03 09:56:16 +0000] [176120] [INFO] Worker exiting (pid: 176120)
+[2025-04-03 09:56:16 +0000] [176117] [ERROR] Worker (pid:176118) was sent SIGTERM!
+[2025-04-03 09:56:16 +0000] [176117] [ERROR] Worker (pid:176119) was sent SIGTERM!
+[2025-04-03 09:56:16 +0000] [176117] [INFO] Shutting down: Master
+[2025-04-03 09:56:16 +0000] [176132] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 09:56:16 +0000] [176132] [INFO] Listening at: http://127.0.0.1:8000 (176132)
+[2025-04-03 09:56:16 +0000] [176132] [INFO] Using worker: sync
+[2025-04-03 09:56:16 +0000] [176133] [INFO] Booting worker with pid: 176133
+[2025-04-03 09:56:16 +0000] [176134] [INFO] Booting worker with pid: 176134
+[2025-04-03 09:56:16 +0000] [176135] [INFO] Booting worker with pid: 176135
+[2025-04-03 09:58:50 +0000] [176133] [INFO] Worker exiting (pid: 176133)
+[2025-04-03 09:58:50 +0000] [176135] [INFO] Worker exiting (pid: 176135)
+[2025-04-03 09:58:50 +0000] [176132] [INFO] Handling signal: term
+[2025-04-03 09:58:50 +0000] [176134] [INFO] Worker exiting (pid: 176134)
+[2025-04-03 09:58:50 +0000] [176132] [ERROR] Worker (pid:176133) was sent SIGTERM!
+[2025-04-03 09:58:50 +0000] [176132] [ERROR] Worker (pid:176135) was sent SIGTERM!
+[2025-04-03 09:58:51 +0000] [176132] [INFO] Shutting down: Master
+[2025-04-03 09:58:51 +0000] [176201] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 09:58:51 +0000] [176201] [INFO] Listening at: http://127.0.0.1:8000 (176201)
+[2025-04-03 09:58:51 +0000] [176201] [INFO] Using worker: sync
+[2025-04-03 09:58:51 +0000] [176202] [INFO] Booting worker with pid: 176202
+[2025-04-03 09:58:51 +0000] [176203] [INFO] Booting worker with pid: 176203
+[2025-04-03 09:58:51 +0000] [176204] [INFO] Booting worker with pid: 176204
+[2025-04-03 10:00:33 +0000] [176202] [INFO] Worker exiting (pid: 176202)
+[2025-04-03 10:00:33 +0000] [176204] [INFO] Worker exiting (pid: 176204)
+[2025-04-03 10:00:33 +0000] [176203] [INFO] Worker exiting (pid: 176203)
+[2025-04-03 10:00:33 +0000] [176201] [INFO] Handling signal: term
+[2025-04-03 10:00:33 +0000] [176201] [ERROR] Worker (pid:176202) was sent SIGTERM!
+[2025-04-03 10:00:33 +0000] [176201] [ERROR] Worker (pid:176204) was sent SIGTERM!
+[2025-04-03 10:00:33 +0000] [176201] [ERROR] Worker (pid:176203) was sent SIGTERM!
+[2025-04-03 10:00:33 +0000] [176201] [INFO] Shutting down: Master
+[2025-04-03 10:00:33 +0000] [176235] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:00:33 +0000] [176235] [INFO] Listening at: http://127.0.0.1:8000 (176235)
+[2025-04-03 10:00:33 +0000] [176235] [INFO] Using worker: sync
+[2025-04-03 10:00:33 +0000] [176236] [INFO] Booting worker with pid: 176236
+[2025-04-03 10:00:33 +0000] [176237] [INFO] Booting worker with pid: 176237
+[2025-04-03 10:00:33 +0000] [176238] [INFO] Booting worker with pid: 176238
+[2025-04-03 10:02:26 +0000] [176237] [INFO] Worker exiting (pid: 176237)
+[2025-04-03 10:02:26 +0000] [176238] [INFO] Worker exiting (pid: 176238)
+[2025-04-03 10:02:26 +0000] [176236] [INFO] Worker exiting (pid: 176236)
+[2025-04-03 10:02:26 +0000] [176235] [INFO] Handling signal: term
+[2025-04-03 10:02:26 +0000] [176235] [ERROR] Worker (pid:176238) was sent SIGTERM!
+[2025-04-03 10:02:26 +0000] [176235] [ERROR] Worker (pid:176237) was sent SIGTERM!
+[2025-04-03 10:02:27 +0000] [176235] [INFO] Shutting down: Master
+[2025-04-03 10:02:27 +0000] [176290] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:02:27 +0000] [176290] [INFO] Listening at: http://127.0.0.1:8000 (176290)
+[2025-04-03 10:02:27 +0000] [176290] [INFO] Using worker: sync
+[2025-04-03 10:02:27 +0000] [176292] [INFO] Booting worker with pid: 176292
+[2025-04-03 10:02:27 +0000] [176293] [INFO] Booting worker with pid: 176293
+[2025-04-03 10:02:27 +0000] [176294] [INFO] Booting worker with pid: 176294
+[2025-04-03 10:02:44 +0000] [176292] [INFO] Worker exiting (pid: 176292)
+[2025-04-03 10:02:44 +0000] [176294] [INFO] Worker exiting (pid: 176294)
+[2025-04-03 10:02:44 +0000] [176293] [INFO] Worker exiting (pid: 176293)
+[2025-04-03 10:02:44 +0000] [176290] [INFO] Handling signal: term
+[2025-04-03 10:02:44 +0000] [176290] [ERROR] Worker (pid:176292) was sent SIGTERM!
+[2025-04-03 10:02:44 +0000] [176290] [ERROR] Worker (pid:176294) was sent SIGTERM!
+[2025-04-03 10:02:44 +0000] [176290] [ERROR] Worker (pid:176293) was sent SIGTERM!
+[2025-04-03 10:02:44 +0000] [176290] [INFO] Shutting down: Master
+[2025-04-03 10:02:44 +0000] [176303] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:02:44 +0000] [176303] [INFO] Listening at: http://127.0.0.1:8000 (176303)
+[2025-04-03 10:02:44 +0000] [176303] [INFO] Using worker: sync
+[2025-04-03 10:02:44 +0000] [176304] [INFO] Booting worker with pid: 176304
+[2025-04-03 10:02:45 +0000] [176305] [INFO] Booting worker with pid: 176305
+[2025-04-03 10:02:45 +0000] [176306] [INFO] Booting worker with pid: 176306
+[2025-04-03 10:03:12 +0000] [176306] [INFO] Worker exiting (pid: 176306)
+[2025-04-03 10:03:12 +0000] [176305] [INFO] Worker exiting (pid: 176305)
+[2025-04-03 10:03:12 +0000] [176303] [INFO] Handling signal: term
+[2025-04-03 10:03:12 +0000] [176304] [INFO] Worker exiting (pid: 176304)
+[2025-04-03 10:03:12 +0000] [176303] [ERROR] Worker (pid:176305) was sent SIGTERM!
+[2025-04-03 10:03:12 +0000] [176303] [ERROR] Worker (pid:176306) was sent SIGTERM!
+[2025-04-03 10:03:13 +0000] [176303] [INFO] Shutting down: Master
+[2025-04-03 10:03:13 +0000] [176331] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:03:13 +0000] [176331] [INFO] Listening at: http://127.0.0.1:8000 (176331)
+[2025-04-03 10:03:13 +0000] [176331] [INFO] Using worker: sync
+[2025-04-03 10:03:13 +0000] [176332] [INFO] Booting worker with pid: 176332
+[2025-04-03 10:03:13 +0000] [176333] [INFO] Booting worker with pid: 176333
+[2025-04-03 10:03:13 +0000] [176334] [INFO] Booting worker with pid: 176334
+[2025-04-03 10:03:39 +0000] [176334] [INFO] Worker exiting (pid: 176334)
+[2025-04-03 10:03:39 +0000] [176333] [INFO] Worker exiting (pid: 176333)
+[2025-04-03 10:03:39 +0000] [176332] [INFO] Worker exiting (pid: 176332)
+[2025-04-03 10:03:39 +0000] [176331] [INFO] Handling signal: term
+[2025-04-03 10:03:39 +0000] [176331] [ERROR] Worker (pid:176333) was sent SIGTERM!
+[2025-04-03 10:03:39 +0000] [176331] [ERROR] Worker (pid:176334) was sent SIGTERM!
+[2025-04-03 10:03:39 +0000] [176331] [INFO] Shutting down: Master
+[2025-04-03 10:03:39 +0000] [176351] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:03:39 +0000] [176351] [INFO] Listening at: http://127.0.0.1:8000 (176351)
+[2025-04-03 10:03:39 +0000] [176351] [INFO] Using worker: sync
+[2025-04-03 10:03:39 +0000] [176352] [INFO] Booting worker with pid: 176352
+[2025-04-03 10:03:39 +0000] [176353] [INFO] Booting worker with pid: 176353
+[2025-04-03 10:03:39 +0000] [176354] [INFO] Booting worker with pid: 176354
+[2025-04-03 10:04:26 +0000] [176351] [INFO] Handling signal: term
+[2025-04-03 10:04:26 +0000] [176354] [INFO] Worker exiting (pid: 176354)
+[2025-04-03 10:04:26 +0000] [176353] [INFO] Worker exiting (pid: 176353)
+[2025-04-03 10:04:26 +0000] [176352] [INFO] Worker exiting (pid: 176352)
+[2025-04-03 10:04:26 +0000] [176351] [ERROR] Worker (pid:176353) was sent SIGTERM!
+[2025-04-03 10:04:26 +0000] [176351] [INFO] Shutting down: Master
+[2025-04-03 10:04:26 +0000] [176403] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:04:26 +0000] [176403] [INFO] Listening at: http://127.0.0.1:8000 (176403)
+[2025-04-03 10:04:26 +0000] [176403] [INFO] Using worker: sync
+[2025-04-03 10:04:26 +0000] [176404] [INFO] Booting worker with pid: 176404
+[2025-04-03 10:04:26 +0000] [176405] [INFO] Booting worker with pid: 176405
+[2025-04-03 10:04:27 +0000] [176406] [INFO] Booting worker with pid: 176406
+[2025-04-03 10:04:38 +0000] [176403] [INFO] Handling signal: term
+[2025-04-03 10:04:38 +0000] [176404] [INFO] Worker exiting (pid: 176404)
+[2025-04-03 10:04:38 +0000] [176406] [INFO] Worker exiting (pid: 176406)
+[2025-04-03 10:04:38 +0000] [176405] [INFO] Worker exiting (pid: 176405)
+[2025-04-03 10:04:38 +0000] [176403] [INFO] Shutting down: Master
+[2025-04-03 10:04:39 +0000] [176415] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:04:39 +0000] [176415] [INFO] Listening at: http://127.0.0.1:8000 (176415)
+[2025-04-03 10:04:39 +0000] [176415] [INFO] Using worker: sync
+[2025-04-03 10:04:39 +0000] [176416] [INFO] Booting worker with pid: 176416
+[2025-04-03 10:04:39 +0000] [176417] [INFO] Booting worker with pid: 176417
+[2025-04-03 10:04:39 +0000] [176418] [INFO] Booting worker with pid: 176418
+[2025-04-03 10:05:05 +0000] [176416] [INFO] Worker exiting (pid: 176416)
+[2025-04-03 10:05:05 +0000] [176415] [INFO] Handling signal: term
+[2025-04-03 10:05:05 +0000] [176417] [INFO] Worker exiting (pid: 176417)
+[2025-04-03 10:05:05 +0000] [176418] [INFO] Worker exiting (pid: 176418)
+[2025-04-03 10:05:06 +0000] [176415] [INFO] Shutting down: Master
+[2025-04-03 10:05:06 +0000] [176447] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:05:06 +0000] [176447] [INFO] Listening at: http://127.0.0.1:8000 (176447)
+[2025-04-03 10:05:06 +0000] [176447] [INFO] Using worker: sync
+[2025-04-03 10:05:06 +0000] [176449] [INFO] Booting worker with pid: 176449
+[2025-04-03 10:05:06 +0000] [176450] [INFO] Booting worker with pid: 176450
+[2025-04-03 10:05:06 +0000] [176451] [INFO] Booting worker with pid: 176451
+[2025-04-03 10:05:42 +0000] [176451] [INFO] Worker exiting (pid: 176451)
+[2025-04-03 10:05:42 +0000] [176450] [INFO] Worker exiting (pid: 176450)
+[2025-04-03 10:05:42 +0000] [176449] [INFO] Worker exiting (pid: 176449)
+[2025-04-03 10:05:42 +0000] [176447] [INFO] Handling signal: term
+[2025-04-03 10:05:42 +0000] [176447] [ERROR] Worker (pid:176450) was sent SIGTERM!
+[2025-04-03 10:05:42 +0000] [176447] [ERROR] Worker (pid:176449) was sent SIGTERM!
+[2025-04-03 10:05:42 +0000] [176447] [ERROR] Worker (pid:176451) was sent SIGTERM!
+[2025-04-03 10:05:42 +0000] [176447] [INFO] Shutting down: Master
+[2025-04-03 10:05:43 +0000] [176467] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:05:43 +0000] [176467] [INFO] Listening at: http://127.0.0.1:8000 (176467)
+[2025-04-03 10:05:43 +0000] [176467] [INFO] Using worker: sync
+[2025-04-03 10:05:43 +0000] [176468] [INFO] Booting worker with pid: 176468
+[2025-04-03 10:05:43 +0000] [176469] [INFO] Booting worker with pid: 176469
+[2025-04-03 10:05:43 +0000] [176470] [INFO] Booting worker with pid: 176470
+[2025-04-03 10:06:28 +0000] [176469] [INFO] Worker exiting (pid: 176469)
+[2025-04-03 10:06:28 +0000] [176468] [INFO] Worker exiting (pid: 176468)
+[2025-04-03 10:06:28 +0000] [176467] [INFO] Handling signal: term
+[2025-04-03 10:06:28 +0000] [176470] [INFO] Worker exiting (pid: 176470)
+[2025-04-03 10:06:28 +0000] [176467] [ERROR] Worker (pid:176469) was sent SIGTERM!
+[2025-04-03 10:06:28 +0000] [176467] [ERROR] Worker (pid:176468) was sent SIGTERM!
+[2025-04-03 10:06:28 +0000] [176467] [INFO] Shutting down: Master
+[2025-04-03 10:06:29 +0000] [176508] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:06:29 +0000] [176508] [INFO] Listening at: http://127.0.0.1:8000 (176508)
+[2025-04-03 10:06:29 +0000] [176508] [INFO] Using worker: sync
+[2025-04-03 10:06:29 +0000] [176509] [INFO] Booting worker with pid: 176509
+[2025-04-03 10:06:29 +0000] [176510] [INFO] Booting worker with pid: 176510
+[2025-04-03 10:06:29 +0000] [176511] [INFO] Booting worker with pid: 176511
+[2025-04-03 10:09:58 +0000] [176508] [INFO] Handling signal: term
+[2025-04-03 10:09:58 +0000] [176510] [INFO] Worker exiting (pid: 176510)
+[2025-04-03 10:09:58 +0000] [176509] [INFO] Worker exiting (pid: 176509)
+[2025-04-03 10:09:58 +0000] [176511] [INFO] Worker exiting (pid: 176511)
+[2025-04-03 10:09:58 +0000] [176508] [ERROR] Worker (pid:176511) was sent SIGTERM!
+[2025-04-03 10:09:58 +0000] [176508] [INFO] Shutting down: Master
+[2025-04-03 10:09:58 +0000] [176640] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:09:58 +0000] [176640] [INFO] Listening at: http://127.0.0.1:8000 (176640)
+[2025-04-03 10:09:58 +0000] [176640] [INFO] Using worker: sync
+[2025-04-03 10:09:58 +0000] [176642] [INFO] Booting worker with pid: 176642
+[2025-04-03 10:09:58 +0000] [176643] [INFO] Booting worker with pid: 176643
+[2025-04-03 10:09:58 +0000] [176644] [INFO] Booting worker with pid: 176644
+[2025-04-03 10:10:40 +0000] [176642] [INFO] Worker exiting (pid: 176642)
+[2025-04-03 10:10:40 +0000] [176644] [INFO] Worker exiting (pid: 176644)
+[2025-04-03 10:10:40 +0000] [176643] [INFO] Worker exiting (pid: 176643)
+[2025-04-03 10:10:40 +0000] [176640] [INFO] Handling signal: term
+[2025-04-03 10:10:40 +0000] [176640] [ERROR] Worker (pid:176642) was sent SIGTERM!
+[2025-04-03 10:10:40 +0000] [176640] [ERROR] Worker (pid:176644) was sent SIGTERM!
+[2025-04-03 10:10:40 +0000] [176640] [ERROR] Worker (pid:176643) was sent SIGTERM!
+[2025-04-03 10:10:40 +0000] [176640] [INFO] Shutting down: Master
+[2025-04-03 10:10:40 +0000] [176680] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:10:40 +0000] [176680] [INFO] Listening at: http://127.0.0.1:8000 (176680)
+[2025-04-03 10:10:40 +0000] [176680] [INFO] Using worker: sync
+[2025-04-03 10:10:40 +0000] [176681] [INFO] Booting worker with pid: 176681
+[2025-04-03 10:10:40 +0000] [176682] [INFO] Booting worker with pid: 176682
+[2025-04-03 10:10:40 +0000] [176683] [INFO] Booting worker with pid: 176683
+[2025-04-03 10:11:00 +0000] [176681] [INFO] Worker exiting (pid: 176681)
+[2025-04-03 10:11:00 +0000] [176680] [INFO] Handling signal: term
+[2025-04-03 10:11:00 +0000] [176682] [INFO] Worker exiting (pid: 176682)
+[2025-04-03 10:11:00 +0000] [176683] [INFO] Worker exiting (pid: 176683)
+[2025-04-03 10:11:01 +0000] [176680] [INFO] Shutting down: Master
+[2025-04-03 10:11:01 +0000] [176711] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:11:01 +0000] [176711] [INFO] Listening at: http://127.0.0.1:8000 (176711)
+[2025-04-03 10:11:01 +0000] [176711] [INFO] Using worker: sync
+[2025-04-03 10:11:01 +0000] [176712] [INFO] Booting worker with pid: 176712
+[2025-04-03 10:11:01 +0000] [176713] [INFO] Booting worker with pid: 176713
+[2025-04-03 10:11:01 +0000] [176714] [INFO] Booting worker with pid: 176714
+[2025-04-03 10:11:11 +0000] [176711] [INFO] Handling signal: term
+[2025-04-03 10:11:11 +0000] [176713] [INFO] Worker exiting (pid: 176713)
+[2025-04-03 10:11:11 +0000] [176714] [INFO] Worker exiting (pid: 176714)
+[2025-04-03 10:11:11 +0000] [176711] [ERROR] Worker (pid:176713) was sent SIGTERM!
+[2025-04-03 10:11:11 +0000] [176711] [ERROR] Worker (pid:176714) was sent SIGTERM!
+[2025-04-03 10:11:11 +0000] [176712] [INFO] Worker exiting (pid: 176712)
+[2025-04-03 10:11:11 +0000] [176711] [INFO] Shutting down: Master
+[2025-04-03 10:11:11 +0000] [176723] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:11:11 +0000] [176723] [INFO] Listening at: http://127.0.0.1:8000 (176723)
+[2025-04-03 10:11:11 +0000] [176723] [INFO] Using worker: sync
+[2025-04-03 10:11:11 +0000] [176724] [INFO] Booting worker with pid: 176724
+[2025-04-03 10:11:11 +0000] [176725] [INFO] Booting worker with pid: 176725
+[2025-04-03 10:11:11 +0000] [176726] [INFO] Booting worker with pid: 176726
+[2025-04-03 10:11:58 +0000] [176726] [INFO] Worker exiting (pid: 176726)
+[2025-04-03 10:11:58 +0000] [176723] [INFO] Handling signal: term
+[2025-04-03 10:11:58 +0000] [176724] [INFO] Worker exiting (pid: 176724)
+[2025-04-03 10:11:58 +0000] [176725] [INFO] Worker exiting (pid: 176725)
+[2025-04-03 10:11:58 +0000] [176723] [INFO] Shutting down: Master
+[2025-04-03 10:11:59 +0000] [176765] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:11:59 +0000] [176765] [INFO] Listening at: http://127.0.0.1:8000 (176765)
+[2025-04-03 10:11:59 +0000] [176765] [INFO] Using worker: sync
+[2025-04-03 10:11:59 +0000] [176766] [INFO] Booting worker with pid: 176766
+[2025-04-03 10:11:59 +0000] [176767] [INFO] Booting worker with pid: 176767
+[2025-04-03 10:11:59 +0000] [176768] [INFO] Booting worker with pid: 176768
+[2025-04-03 10:12:34 +0000] [176768] [INFO] Worker exiting (pid: 176768)
+[2025-04-03 10:12:34 +0000] [176765] [INFO] Handling signal: term
+[2025-04-03 10:12:34 +0000] [176767] [INFO] Worker exiting (pid: 176767)
+[2025-04-03 10:12:34 +0000] [176766] [INFO] Worker exiting (pid: 176766)
+[2025-04-03 10:12:34 +0000] [176765] [ERROR] Worker (pid:176768) was sent SIGTERM!
+[2025-04-03 10:12:34 +0000] [176765] [INFO] Shutting down: Master
+[2025-04-03 10:12:35 +0000] [176792] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:12:35 +0000] [176792] [INFO] Listening at: http://127.0.0.1:8000 (176792)
+[2025-04-03 10:12:35 +0000] [176792] [INFO] Using worker: sync
+[2025-04-03 10:12:35 +0000] [176793] [INFO] Booting worker with pid: 176793
+[2025-04-03 10:12:35 +0000] [176794] [INFO] Booting worker with pid: 176794
+[2025-04-03 10:12:35 +0000] [176795] [INFO] Booting worker with pid: 176795
+[2025-04-03 10:13:04 +0000] [176793] [INFO] Worker exiting (pid: 176793)
+[2025-04-03 10:13:04 +0000] [176795] [INFO] Worker exiting (pid: 176795)
+[2025-04-03 10:13:04 +0000] [176794] [INFO] Worker exiting (pid: 176794)
+[2025-04-03 10:13:04 +0000] [176792] [INFO] Handling signal: term
+[2025-04-03 10:13:04 +0000] [176792] [ERROR] Worker (pid:176795) was sent SIGTERM!
+[2025-04-03 10:13:04 +0000] [176792] [ERROR] Worker (pid:176793) was sent SIGTERM!
+[2025-04-03 10:13:04 +0000] [176792] [ERROR] Worker (pid:176794) was sent SIGTERM!
+[2025-04-03 10:13:04 +0000] [176792] [INFO] Shutting down: Master
+[2025-04-03 10:13:04 +0000] [176830] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:13:04 +0000] [176830] [INFO] Listening at: http://127.0.0.1:8000 (176830)
+[2025-04-03 10:13:04 +0000] [176830] [INFO] Using worker: sync
+[2025-04-03 10:13:04 +0000] [176831] [INFO] Booting worker with pid: 176831
+[2025-04-03 10:13:04 +0000] [176832] [INFO] Booting worker with pid: 176832
+[2025-04-03 10:13:04 +0000] [176833] [INFO] Booting worker with pid: 176833
+[2025-04-03 10:13:37 +0000] [176831] [INFO] Worker exiting (pid: 176831)
+[2025-04-03 10:13:37 +0000] [176833] [INFO] Worker exiting (pid: 176833)
+[2025-04-03 10:13:37 +0000] [176830] [INFO] Handling signal: term
+[2025-04-03 10:13:37 +0000] [176832] [INFO] Worker exiting (pid: 176832)
+[2025-04-03 10:13:37 +0000] [176830] [ERROR] Worker (pid:176831) was sent SIGTERM!
+[2025-04-03 10:13:37 +0000] [176830] [ERROR] Worker (pid:176833) was sent SIGTERM!
+[2025-04-03 10:13:37 +0000] [176830] [INFO] Shutting down: Master
+[2025-04-03 10:13:37 +0000] [176850] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:13:37 +0000] [176850] [INFO] Listening at: http://127.0.0.1:8000 (176850)
+[2025-04-03 10:13:37 +0000] [176850] [INFO] Using worker: sync
+[2025-04-03 10:13:37 +0000] [176851] [INFO] Booting worker with pid: 176851
+[2025-04-03 10:13:37 +0000] [176852] [INFO] Booting worker with pid: 176852
+[2025-04-03 10:13:37 +0000] [176853] [INFO] Booting worker with pid: 176853
+[2025-04-03 10:14:05 +0000] [176850] [INFO] Handling signal: term
+[2025-04-03 10:14:05 +0000] [176851] [INFO] Worker exiting (pid: 176851)
+[2025-04-03 10:14:05 +0000] [176853] [INFO] Worker exiting (pid: 176853)
+[2025-04-03 10:14:05 +0000] [176852] [INFO] Worker exiting (pid: 176852)
+[2025-04-03 10:14:06 +0000] [176850] [INFO] Shutting down: Master
+[2025-04-03 10:14:06 +0000] [176879] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:14:06 +0000] [176879] [INFO] Listening at: http://127.0.0.1:8000 (176879)
+[2025-04-03 10:14:06 +0000] [176879] [INFO] Using worker: sync
+[2025-04-03 10:14:06 +0000] [176880] [INFO] Booting worker with pid: 176880
+[2025-04-03 10:14:06 +0000] [176881] [INFO] Booting worker with pid: 176881
+[2025-04-03 10:14:06 +0000] [176882] [INFO] Booting worker with pid: 176882
+[2025-04-03 10:16:34 +0000] [176879] [INFO] Handling signal: term
+[2025-04-03 10:16:34 +0000] [176880] [INFO] Worker exiting (pid: 176880)
+[2025-04-03 10:16:34 +0000] [176881] [INFO] Worker exiting (pid: 176881)
+[2025-04-03 10:16:34 +0000] [176882] [INFO] Worker exiting (pid: 176882)
+[2025-04-03 10:16:35 +0000] [176879] [INFO] Shutting down: Master
+[2025-04-03 10:16:35 +0000] [176951] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:16:35 +0000] [176951] [INFO] Listening at: http://127.0.0.1:8000 (176951)
+[2025-04-03 10:16:35 +0000] [176951] [INFO] Using worker: sync
+[2025-04-03 10:16:35 +0000] [176953] [INFO] Booting worker with pid: 176953
+[2025-04-03 10:16:35 +0000] [176954] [INFO] Booting worker with pid: 176954
+[2025-04-03 10:16:35 +0000] [176955] [INFO] Booting worker with pid: 176955
+[2025-04-03 10:16:52 +0000] [176951] [INFO] Handling signal: term
+[2025-04-03 10:16:52 +0000] [176953] [INFO] Worker exiting (pid: 176953)
+[2025-04-03 10:16:52 +0000] [176955] [INFO] Worker exiting (pid: 176955)
+[2025-04-03 10:16:52 +0000] [176954] [INFO] Worker exiting (pid: 176954)
+[2025-04-03 10:16:53 +0000] [176951] [INFO] Shutting down: Master
+[2025-04-03 10:16:53 +0000] [176981] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:16:53 +0000] [176981] [INFO] Listening at: http://127.0.0.1:8000 (176981)
+[2025-04-03 10:16:53 +0000] [176981] [INFO] Using worker: sync
+[2025-04-03 10:16:53 +0000] [176982] [INFO] Booting worker with pid: 176982
+[2025-04-03 10:16:53 +0000] [176983] [INFO] Booting worker with pid: 176983
+[2025-04-03 10:16:53 +0000] [176984] [INFO] Booting worker with pid: 176984
+[2025-04-03 10:17:32 +0000] [176981] [INFO] Handling signal: term
+[2025-04-03 10:17:32 +0000] [176982] [INFO] Worker exiting (pid: 176982)
+[2025-04-03 10:17:32 +0000] [176983] [INFO] Worker exiting (pid: 176983)
+[2025-04-03 10:17:32 +0000] [176984] [INFO] Worker exiting (pid: 176984)
+[2025-04-03 10:17:33 +0000] [176981] [INFO] Shutting down: Master
+[2025-04-03 10:17:33 +0000] [177005] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:17:33 +0000] [177005] [INFO] Listening at: http://127.0.0.1:8000 (177005)
+[2025-04-03 10:17:33 +0000] [177005] [INFO] Using worker: sync
+[2025-04-03 10:17:33 +0000] [177006] [INFO] Booting worker with pid: 177006
+[2025-04-03 10:17:33 +0000] [177007] [INFO] Booting worker with pid: 177007
+[2025-04-03 10:17:33 +0000] [177008] [INFO] Booting worker with pid: 177008
+[2025-04-03 10:18:28 +0000] [177007] [INFO] Worker exiting (pid: 177007)
+[2025-04-03 10:18:28 +0000] [177008] [INFO] Worker exiting (pid: 177008)
+[2025-04-03 10:18:28 +0000] [177006] [INFO] Worker exiting (pid: 177006)
+[2025-04-03 10:18:28 +0000] [177005] [INFO] Handling signal: term
+[2025-04-03 10:18:28 +0000] [177005] [ERROR] Worker (pid:177007) was sent SIGTERM!
+[2025-04-03 10:18:28 +0000] [177005] [ERROR] Worker (pid:177008) was sent SIGTERM!
+[2025-04-03 10:18:28 +0000] [177005] [ERROR] Worker (pid:177006) was sent SIGTERM!
+[2025-04-03 10:18:28 +0000] [177005] [INFO] Shutting down: Master
+[2025-04-03 10:18:28 +0000] [177047] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:18:28 +0000] [177047] [INFO] Listening at: http://127.0.0.1:8000 (177047)
+[2025-04-03 10:18:28 +0000] [177047] [INFO] Using worker: sync
+[2025-04-03 10:18:28 +0000] [177048] [INFO] Booting worker with pid: 177048
+[2025-04-03 10:18:28 +0000] [177049] [INFO] Booting worker with pid: 177049
+[2025-04-03 10:18:28 +0000] [177050] [INFO] Booting worker with pid: 177050
+[2025-04-03 10:18:44 +0000] [177048] [INFO] Worker exiting (pid: 177048)
+[2025-04-03 10:18:44 +0000] [177050] [INFO] Worker exiting (pid: 177050)
+[2025-04-03 10:18:44 +0000] [177047] [INFO] Handling signal: term
+[2025-04-03 10:18:44 +0000] [177049] [INFO] Worker exiting (pid: 177049)
+[2025-04-03 10:18:44 +0000] [177047] [INFO] Shutting down: Master
+[2025-04-03 10:18:45 +0000] [177059] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:18:45 +0000] [177059] [INFO] Listening at: http://127.0.0.1:8000 (177059)
+[2025-04-03 10:18:45 +0000] [177059] [INFO] Using worker: sync
+[2025-04-03 10:18:45 +0000] [177060] [INFO] Booting worker with pid: 177060
+[2025-04-03 10:18:45 +0000] [177061] [INFO] Booting worker with pid: 177061
+[2025-04-03 10:18:45 +0000] [177062] [INFO] Booting worker with pid: 177062
+[2025-04-03 10:19:12 +0000] [177062] [INFO] Worker exiting (pid: 177062)
+[2025-04-03 10:19:12 +0000] [177061] [INFO] Worker exiting (pid: 177061)
+[2025-04-03 10:19:12 +0000] [177060] [INFO] Worker exiting (pid: 177060)
+[2025-04-03 10:19:12 +0000] [177059] [INFO] Handling signal: term
+[2025-04-03 10:19:12 +0000] [177059] [ERROR] Worker (pid:177062) was sent SIGTERM!
+[2025-04-03 10:19:12 +0000] [177059] [ERROR] Worker (pid:177061) was sent SIGTERM!
+[2025-04-03 10:19:12 +0000] [177059] [ERROR] Worker (pid:177060) was sent SIGTERM!
+[2025-04-03 10:19:12 +0000] [177059] [INFO] Shutting down: Master
+[2025-04-03 10:19:12 +0000] [177091] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:19:12 +0000] [177091] [INFO] Listening at: http://127.0.0.1:8000 (177091)
+[2025-04-03 10:19:12 +0000] [177091] [INFO] Using worker: sync
+[2025-04-03 10:19:12 +0000] [177092] [INFO] Booting worker with pid: 177092
+[2025-04-03 10:19:12 +0000] [177093] [INFO] Booting worker with pid: 177093
+[2025-04-03 10:19:12 +0000] [177094] [INFO] Booting worker with pid: 177094
+[2025-04-03 10:19:52 +0000] [177092] [INFO] Worker exiting (pid: 177092)
+[2025-04-03 10:19:52 +0000] [177093] [INFO] Worker exiting (pid: 177093)
+[2025-04-03 10:19:52 +0000] [177094] [INFO] Worker exiting (pid: 177094)
+[2025-04-03 10:19:52 +0000] [177091] [INFO] Handling signal: term
+[2025-04-03 10:19:52 +0000] [177091] [ERROR] Worker (pid:177093) was sent SIGTERM!
+[2025-04-03 10:19:52 +0000] [177091] [ERROR] Worker (pid:177092) was sent SIGTERM!
+[2025-04-03 10:19:53 +0000] [177091] [INFO] Shutting down: Master
+[2025-04-03 10:19:53 +0000] [177110] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:19:53 +0000] [177110] [INFO] Listening at: http://127.0.0.1:8000 (177110)
+[2025-04-03 10:19:53 +0000] [177110] [INFO] Using worker: sync
+[2025-04-03 10:19:53 +0000] [177111] [INFO] Booting worker with pid: 177111
+[2025-04-03 10:19:53 +0000] [177112] [INFO] Booting worker with pid: 177112
+[2025-04-03 10:19:53 +0000] [177113] [INFO] Booting worker with pid: 177113
+[2025-04-03 10:26:22 +0000] [177113] [INFO] Worker exiting (pid: 177113)
+[2025-04-03 10:26:22 +0000] [177112] [INFO] Worker exiting (pid: 177112)
+[2025-04-03 10:26:22 +0000] [177111] [INFO] Worker exiting (pid: 177111)
+[2025-04-03 10:26:22 +0000] [177110] [INFO] Handling signal: term
+[2025-04-03 10:26:22 +0000] [177110] [ERROR] Worker (pid:177113) was sent SIGTERM!
+[2025-04-03 10:26:22 +0000] [177110] [ERROR] Worker (pid:177111) was sent SIGTERM!
+[2025-04-03 10:26:22 +0000] [177110] [ERROR] Worker (pid:177112) was sent SIGTERM!
+[2025-04-03 10:26:23 +0000] [177110] [INFO] Shutting down: Master
+[2025-04-03 10:26:23 +0000] [177750] [INFO] Starting gunicorn 23.0.0
+[2025-04-03 10:26:23 +0000] [177750] [INFO] Listening at: http://127.0.0.1:8000 (177750)
+[2025-04-03 10:26:23 +0000] [177750] [INFO] Using worker: sync
+[2025-04-03 10:26:23 +0000] [177752] [INFO] Booting worker with pid: 177752
+[2025-04-03 10:26:23 +0000] [177753] [INFO] Booting worker with pid: 177753
+[2025-04-03 10:26:23 +0000] [177754] [INFO] Booting worker with pid: 177754

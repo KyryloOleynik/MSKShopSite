@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 09:22+0000\n"
+"POT-Creation-Date: 2025-04-03 10:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -407,32 +407,6 @@ msgstr ""
 msgid "Перейти к FAQ"
 msgstr "Zu den FAQ"
 
-#: templates/404.html:93 templates/500.html:93 templates/about_us.html:20
-#: templates/about_us.html:208 templates/checkout_page.html:244
-#: templates/forgot_password.html:45 templates/index.html:319
-#: templates/password_reset_confirm.html:52 templates/payment_failed.html:41
-#: templates/payment_for_the_order.html:51 templates/payment_success.html:41
-#: templates/product_page.html:240 templates/profile_change_password.html:66
-#: templates/profile_page_wishlist.html:146 templates/sign_in.html:66
-#: templates/sign_up.html:53 templates/user_profile.html:106
-#: templates/user_profile_messages.html:69
-#: templates/user_profile_orders.html:72
-msgid "Про нас та гарантії"
-msgstr "Über uns und Garantien"
-
-#: templates/404.html:96 templates/500.html:96 templates/about_us.html:211
-#: templates/checkout_page.html:247 templates/forgot_password.html:48
-#: templates/index.html:322 templates/password_reset_confirm.html:55
-#: templates/payment_failed.html:44 templates/payment_for_the_order.html:54
-#: templates/payment_success.html:44 templates/product_page.html:243
-#: templates/profile_change_password.html:69
-#: templates/profile_page_wishlist.html:149 templates/sign_in.html:69
-#: templates/sign_up.html:56 templates/user_profile.html:109
-#: templates/user_profile_messages.html:72
-#: templates/user_profile_orders.html:75
-msgid "2024 Інтернет-магазин. Всі права захищені."
-msgstr "2024 Online-Shop. Alle Rechte vorbehalten."
-
 #: templates/500.html:9
 msgid "500 - Внутренняя ошибка сервера | MSK Shop"
 msgstr "500 - Interner Serverfehler | MSK Shop"
@@ -447,6 +421,10 @@ msgid ""
 msgstr ""
 "Leider ist ein Fehler auf dem Server aufgetreten. Wir arbeiten bereits an "
 "der Behebung."
+
+#: templates/about_us.html:20 templates/footer.html:7
+msgid "Про нас та гарантії"
+msgstr "Über uns und Garantien"
 
 #: templates/about_us.html:28
 msgid "Про нас"
@@ -955,6 +933,14 @@ msgstr "Gesamtbetrag:"
 #: templates/checkout_page.html:233
 msgid "Підтвердити замовлення"
 msgstr "Bestellung bestätigen"
+
+#: templates/footer.html:10
+msgid "2024 Інтернет-магазин. Всі права захищені."
+msgstr "2024 Online-Shop. Alle Rechte vorbehalten."
+
+#: templates/footer.html:14
+msgid "Наши социальные сети"
+msgstr "Unsere sozialen Netzwerke"
 
 #: templates/forgot_password.html:21
 msgid "Відновлення паролю"

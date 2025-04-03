@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    {% load i18n %}
+    <link rel="shortcut icon" href="{% static '/img/logo_min.png' %}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSK Shop</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/adaptive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+</head>
+<body>
+{% include "base_menu.html" %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6" id="Prod_img_col">
+            <!-- Изображение товара -->
+            <div id="carouselExample" class="carousel slide h-100" data-bs-ride="carousel">
+                <div class="carousel-inner h-100">
+                    <button class="carousel-control-prev" type="button" style="opacity: 1 !important;" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <div class="rounded-circle bg-light p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#000" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                            <span class="visually-hidden">{% trans "Предыдущее" %}</span>
+                        </div>
+                    </button>
+                  <div class="carousel-item h-100 active">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top p-3 pb-5 h-100 rounded d-block w-100 {% if not product.available %}bg-secondary opacity-50{% endif %}">
+                  </div>
+                  <div class="carousel-item h-100">
+                    <img src="{{ product.image2.url }}" alt="{{ product.name }}" class="card-img-top p-3 pb-5 h-100 rounded d-block w-100 {% if not product.available %}bg-secondary opacity-50{% endif %}">
+                  </div>
+                  {% if product.image3 %}
+                  <div class="carousel-item h-100">
+                    <img src="{{ product.image3.url }}" alt="{{ product.name }}" class="card-img-top p-3 pb-5 h-100 rounded d-block w-100 {% if not product.available %}bg-secondary opacity-50{% endif %}">
+                  </div>
+                  {% endif %}
+                  {% if product.image4 %}
+                  <div class="carousel-item h-100">
+                    <img src="{{ product.image4.url }}" alt="{{ product.name }}" class="card-img-top p-3 pb-5 h-100 rounded d-block w-100 {% if not product.available %}bg-secondary opacity-50{% endif %}">
+                  </div>
+                  {% endif %}
+                  {% if product.image5 %}
+                  <div class="carousel-item h-100">
+                    <img src="{{ product.image5.url }}" alt="{{ product.name }}" class="card-img-top p-3 pb-5 h-100 rounded d-block w-100 {% if not product.available %}bg-secondary opacity-50{% endif %}">
+                  </div>
+                  {% endif %}
+                  {% if product.image6 %}
+                  <div class="carousel-item h-100">
+                    <img src="{{ product.image6.url }}" alt="{{ product.name }}" class="card-img-top p-3 pb-5 h-100 rounded d-block w-100 {% if not product.available %}bg-secondary opacity-50{% endif %}">
+                  </div>
+                  {% endif %}
+                  <button class="carousel-control-next" style="opacity: 1 !important;" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <div class="rounded-circle bg-light p-2">
+                        <svg style="transform: scaleX(-1);" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#000" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        <span class="visually-hidden">{% trans "Следующий" %}</span>
+                    </div>
+                  </button>
+                </div>                
+                
+                <!-- Миниатюры -->
+                <div class="carousel-indicators" style="top: 96%;">
+                    <button type="button" style="background-color: gray;" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active">
+                    </button>
+                    <button type="button" style="background-color: gray;" data-bs-target="#carouselExample" data-bs-slide-to="1">
+                    </button>
+                    {% if product.image3 %}
+                    <button type="button" style="background-color: gray;" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+                    {% endif %}
+                    {% if product.image4 %}
+                    <button type="button" style="background-color: gray;" data-bs-target="#carouselExample" data-bs-slide-to="3"></button>
+                    {% endif %}
+                    {% if product.image5 %}
+                    <button type="button" style="background-color: gray;" data-bs-target="#carouselExample" data-bs-slide-to="4"></button>
+                    {% endif %}
+                    {% if product.image6 %}
+                    <button type="button" style="background-color: gray;" data-bs-target="#carouselExample" data-bs-slide-to="5"></button>
+                    {% endif %}
+                </div>
+
+              </div>
+        </div>
+        <div class="col-md-6">
+            <div id="Prod_description_col">
+                <h3>{{ product.name }}</h3>
+                <p class="text-muted">{% trans "Категорія: " %} {{ product.category.name }}</p>
+
+                <!-- Оценка товара -->
+                {% comment %} <div class="d-flex align-items-center mb-2">
+                    <span class="text-warning me-2">★★★★☆</span>
+                    <span><a href="#" class="nav-link">{% trans "101 відгук" %}</a></span>
+                </div> {% endcomment %}
+
+                <!-- Цена и оплата чястями -->
+                <h4>
+                    {% if product.price_without_sale != product.price %}
+                        <span class="text-danger fw-bold">{{ product.price }}{% trans "грн" %}</span>
+                        <del class="text-muted me-2 small">{{ product.price_without_sale }}{% trans "грн" %}</del>
+                    {% else %}
+                        <span class="fw-bold">{{ product.price }}{% trans "грн" %}</span>
+                    {% endif %}
+                </h4>
+                <div class="d-grid gap-2 mb-3 mt-3">
+                    <a href="{% url 'AddToCartProduct' product.slug %}" class="btn btn-primary btn-lg">{% trans "Купити" %}</a>
+                    {% if product in user.liked_products.all %}
+                    <form method="POST" action="{% url 'Toogle_to_favorite' %}">
+                        {% csrf_token %}
+                        <input type="checkbox" name="product_ids" value="{{ product.pk }}" id="deleteCheck{{ product.pk }}" checked="true" style="display: none;">
+                        <button style="width: 100%;" type="submit" class="btn btn-outline-danger">
+                            <i class="bi bi-heart-fill"></i> {% trans "Прибрати з обраного" %}
+                        </button>
+                    </form>
+                    {% else %}
+                    <form method="POST" action="{% url 'Toogle_to_favorite' %}">
+                        {% csrf_token %}
+                        <input type="checkbox" name="product_ids" value="{{ product.pk }}" id="deleteCheck{{ product.pk }}" checked="true" style="display: none;">
+                        <button style="width: 100%;" type="submit" class="btn btn-outline-danger">
+                            <i class="bi bi-heart"></i> {% trans "Додати в обране" %}
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+                
+                {% if also_you_may_need_product %}
+                    <!-- Рекомендованые аксесуари -->
+                    <div class="recommended border rounded p-3 mb-3">
+                        <h5>{% trans "Рекомендовано:" %}</h5>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ also_you_may_need_product.image.url }}" alt="{{ also_you_may_need_product.name }}" class="img-fluid me-3" style="width: 50px; height: 50px;">
+                            <div>
+                                <a href="{% url 'ViewProduct' also_you_may_need_product.slug %}" class="text-decoration-none text-dark fw-bold">{{ also_you_may_need_product.name }}</a>
+                                <p class="mb-0">
+                                    {% if product.price_without_sale != product.price %}
+                                        <span class="text-danger fw-bold me-1">{{ also_you_may_need_product.price }}{% trans "грн" %}</span>
+                                        <del class="text-muted me-1 small">{{ also_you_may_need_product.price_without_sale }}{% trans "грн" %}</del>
+                                    {% else %}
+                                        <span class="fw-bold me-1">{{ also_you_may_need_product.price }}{% trans "грн" %}</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Способы оплаты --> 
+                <div class="mb-3">
+                    <h5>{% trans "Способи оплати:" %}</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="bi bi-cash text-secondary me-2"></i>
+                            <span class="text-dark">{% trans "Готівкою при отриманні" %}</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="bi bi-credit-card text-secondary me-2"></i>
+                            <span class="text-dark">{% trans "Картою" %}</span>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center">
+                            <i class="bi bi-wallet text-secondary me-2"></i>
+                            <span class="text-dark">{% trans "Криптою" %}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Варианты доставки -->
+                <div class="delivery-options border rounded p-3 mb-3">
+                    <h5>{% trans "Доставка:" %}</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <i class="bi bi-truck text-secondary me-2"></i>
+                            <a href="#" class="text-decoration-none text-dark">{% trans "Кур'єрська доставка в Москві та Берліні" %}</a>
+                            <span class="text-success fw-bold ms-auto" style="margin-right: 1rem !important;">{% trans "400 грн" %}</span>
+                            <span class="text-muted">{% trans "від завтра" %}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <i class="bi bi-box text-secondary me-2"></i>
+                            <a href="#" class="text-decoration-none text-dark">{% trans "Доставка Поштою" %}</a>
+                            <span class="text-success fw-bold ms-auto" style="margin-right: 1rem !important;">{% trans "200 грн" %}</span>
+                            <span class="text-muted">{% trans "від завтра" %}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Описание товара -->
+        <h1 class="mt-4"><strong>{% trans "Опис товару" %}</strong></h1>
+        <div class="mt-3" id="description_container">
+            {{ product.description|safe }}
+        </div>
+        
+        <!-- Предложения товаров -->
+        <div class="also-you-might-like mt-4">
+            <h5 class="mb-4">{% trans "Також вас можуть зацікавити" %}</h5>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5">
+                {% for prod in similar_products %}
+                <div class="col">
+                    <div class="card h-100 {% if not prod.available %}bg-secondary text-secondary opacity-50{% endif %}">
+                        <a href="{% url 'ViewProduct' prod.slug %}"><img src="{{ prod.image.url }}" data-hover="{{ prod.image2.url }}" class="card-img-top p-2 product-image" alt="{{ prod.name }}"></a>
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="nav-link" href="{% url 'ViewProduct' prod.slug %}">{{ prod.name }}</a></h5>
+                            <p class="card-text">
+                                {% if prod.price_without_sale != prod.price %}
+                                    <span class="text-danger fw-bold me-1">{{ prod.price }}{% trans "грн" %}</span>
+                                    <del class="text-muted me-1 small">{{ prod.price_without_sale }}{% trans "грн" %}</del>
+                                {% else %}
+                                    <span class="fw-bold me-1">{{ prod.price }}{% trans "грн" %}</span>
+                                {% endif %}
+                            </p>
+                            <button class="btn btn-primary">{% trans "Додати в кошик" %}</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Теги -->
+        {% if product.tags.exists %}
+            <div class="d-flex flex-wrap gap-2 mb-1">
+                {% for tag in product.tags.all %}
+                    <a class="card px-2 py-1 fs-6" href="{% url 'index' %}?tag={{ tag }}" style="text-decoration: none; color: inherit;">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<footer class="bg-light text-dark py-4 mt-4 border-top">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 mb-2">
+                <a href="{% url 'about_us' %}" class="text-decoration-none text-dark me-3">{% trans "Про нас та гарантії" %}</a>
+            </div>
+            <div class="col-md-6">
+                <p class="mb-0">&copy; {% trans "2024 Інтернет-магазин. Всі права захищені." %}</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    update_Prod_img_col_size()
+    function update_Prod_img_col_size(){
+        const Prod_img_col = document.getElementById("Prod_img_col")
+        Prod_img_col.style.height = document.getElementById("Prod_description_col").offsetHeight + "px";
+    }
+    window.addEventListener("resize", ()=> update_Prod_img_col_size())
+    DescriptionContainer = document.getElementById("description_container");
+    var images = DescriptionContainer.querySelectorAll("img");
+    var texts = DescriptionContainer.querySelectorAll("p");
+    texts.forEach(text => {
+        text.classList += " mb-2 mt-2 ";
+    });
+    var h3s = DescriptionContainer.querySelectorAll("h3");
+    h3s.forEach(h3 => {
+        h3.classList += " mt-4 mb-3 ";
+    });
+    images.forEach(img => {
+        if (!img.classList.contains('no-style')) {
+            img.classList += " mt-3 rounded-3 shadow-lg border border-2 mw-100 ";
+            if (img.style == ""){
+                img.style = "height: unset; ";
+            }
+        }
+    });
+</script>
+<script type="module" src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

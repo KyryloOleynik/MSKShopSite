@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.rst
+django_sitemaps.py
+setup.cfg
+setup.py
+django_sitemaps.egg-info/PKG-INFO
+django_sitemaps.egg-info/SOURCES.txt
+django_sitemaps.egg-info/dependency_links.txt
+django_sitemaps.egg-info/not-zip-safe
+django_sitemaps.egg-info/requires.txt
+django_sitemaps.egg-info/top_level.txt

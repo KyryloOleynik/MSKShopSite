@@ -1,0 +1,460 @@
+{% load static %}
+{% load i18n %}
+{% if messages %}
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 9999; max-width: 93%;">
+        {% for message in messages %} 
+            {% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% else %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>    
+{% endif %}
+
+<script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+</script>  
+
+<!-- ================== Меню ================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-flex">
+    <a class="navbar-brand px-3" href="{% url 'index' %}">
+        <img src="{% static '/img/logo.png' %}" alt="Logo" height="45" class="d-inline-block align-top">
+    </a>
+    <button class="navbar-toggler" type="button" id="navbarToggler" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <form class="d-flex mx-auto w-50" action="{% url 'index' %}" method="GET">
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" name="requestToSearch" value="{{ request.GET.requestToSearch }}" placeholder="{% trans 'Пошук товарів' %}" aria-label="{% trans 'Пошук' %}">
+            <button class="btn btn-outline-primary search-btn" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button class="btn btn-outline-black dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        <span id="languageMenu"><i class="bi bi-globe me-1"></i>{{ LANGUAGE_CODE|upper }}</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <form method="post" class="ChangeLangForm" action="{% url 'set_language' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="language" value="en">
+                                <button class="dropdown-item" type="submit">EN{% if LANGUAGE_CODE == 'en' %}<i class="bi bi-check text-dark"></i>{% endif %}</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="post" class="ChangeLangForm" action="{% url 'set_language' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="language" value="ru">
+                                <button class="dropdown-item" type="submit">RU{% if LANGUAGE_CODE == 'ru' %}<i class="bi bi-check text-dark"></i>{% endif %}</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="post" class="ChangeLangForm" action="{% url 'set_language' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="language" value="de">
+                                <button class="dropdown-item" type="submit">DE{% if LANGUAGE_CODE == 'de' %}<i class="bi bi-check text-dark"></i>{% endif %}</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-3" href="{% url 'logout' %}"><i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Вийти" %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4" id="cat" data-bs-toggle="modal" data-bs-target="#cartModal"><i class="bi bi-cart me-1"></i>{% trans "Кошик" %}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ================== МЕНЮ ДЛЯ МОБИЛЬНЫХ ================== -->
+<header class="d-flex align-items-center justify-content-between px-3 py-2 bg-light d-block d-lg-none">
+    <!-- Логотип -->
+    <a class="navbar-brand px-3" href="{% url 'index' %}">
+        <img src="{% static '/img/logo_min.png' %}" alt="Logo" height="45" class="d-inline-block align-top">
+    </a>
+
+    <!-- Поиск -->
+    <form class="flex-grow-1 mx-2" action="{% url 'index' %}" method="GET">
+      {% csrf_token %}
+      <div class="input-group">
+        <input
+          class="form-control"
+          type="search"
+          name="requestToSearch"
+          placeholder="{% trans 'Пошук товарів' %}"
+          aria-label="{% trans 'Пошук' %}"
+          value="{{ request.GET.requestToSearch }}"
+        >
+        <button class="btn btn-outline-secondary" type="submit">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+
+    <!-- Переключение языка -->
+    <ul class="navbar-nav ml-auto px-4">
+        <li class="nav-item">
+            <div class="dropdown">
+                <button class="btn btn-outline-black dropdown-toggle nav-link" type="button"
+                        id="dropdownMenuButtonMobile" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <span id="languageMenuMobile"><i class="bi bi-globe me-1"></i>{{ LANGUAGE_CODE|upper }}</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButtonMobile">
+                    <li>
+                        <form method="post" class="ChangeLangForm" action="{% url 'set_language' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="language" value="en">
+                            <button class="dropdown-item" type="submit">
+                                EN{% if LANGUAGE_CODE == 'en' %}<i class="bi bi-check text-dark"></i>{% endif %}
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form method="post" class="ChangeLangForm" action="{% url 'set_language' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="language" value="ru">
+                            <button class="dropdown-item" type="submit">
+                                RU{% if LANGUAGE_CODE == 'ru' %}<i class="bi bi-check text-dark"></i>{% endif %}
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form method="post" class="ChangeLangForm" action="{% url 'set_language' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="language" value="de">
+                            <button class="dropdown-item" type="submit">
+                                DE{% if LANGUAGE_CODE == 'de' %}<i class="bi bi-check text-dark"></i>{% endif %}
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</header>
+
+<!-- Нижня панель (footer) для мобильных -->
+<footer class="mobile-bottom-nav d-flex justify-content-around bg-light py-2 position-fixed bottom-0 start-0 end-0 d-lg-none" style="z-index: 999;">
+    <!-- Каталог -->
+    <a href="{% url 'index' %}" class="nav-item text-decoration-none text-dark d-flex flex-column align-items-center">
+      <i class="bi bi-grid"></i>
+      <span>{% trans 'Каталог' %}</span>
+    </a>
+    
+    <!-- Выйти -->
+    <a class="nav-item text-decoration-none text-dark d-flex flex-column align-items-center" href="{% url 'logout' %}">
+        <i class="bi bi-box-arrow-in-right me-1"></i>
+        <span>{% trans "Вийти" %}</span>
+    </a>
+
+    <!-- Корзина -->
+    <a class="nav-item text-decoration-none text-dark d-flex flex-column align-items-center" id="cat" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <i class="bi bi-cart me-1"></i>
+        {% trans "Кошик" %}
+    </a>
+</footer>
+
+<div class="position-fixed bottom-0 end-0 m-2" id="chat_icon_all" style="z-index: 998;">
+    <!-- Кнопка открытия чата -->
+    <button id="chat_icon" class="btn btn-primary rounded-circle p-2 m-2 me-3" style="font-size: x-large;">💬</button>
+
+    <!-- Меню выбора -->
+    <div id="chatMenu" class="card rounded-3 d-none" style="overflow: hidden;">
+        <div class="card-body text-center">
+            <button class="btn btn-outline-primary w-100 mb-2" onclick="window.open('https://t.me/MSKShopOfficialBot', '_blank')">Связаться с поддержкой</button>
+            <button id="openChatBut" class="btn btn-primary w-100">Чат с ассистентом</button>
+        </div>
+    </div>
+
+    <!-- Окно чата -->
+    <div id="chatBox" class="card rounded-3 d-none" style="width: 300px; overflow: hidden;">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <span>Чат поддержки</span>
+            <button class="btn btn-close btn-close-white" id="closeChatBut"></button>
+        </div>
+        <div class="card-body" style="height: 300px; overflow-y: auto; align-content: start !important;">
+            <p class='card p-2 d-none' id='start-message'><strong>{% trans 'Консультант:' %}</strong>{% trans 'Привет! Чем могу помочь?' %}</p>
+        </div>
+        <form class="card-footer d-flex">
+            <input type="text" id="chatInput" class="form-control" placeholder="Напишите сообщение...">
+            <button id="sendMessageBtn" type="button" class="btn btn-primary ms-2">
+                <i class="bi bi-send"></i>
+            </button>            
+        </form>
+    </div>
+</div>
+
+{% if target_order %}
+<!-- Модальное окно выбранного заказа -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg rounded-3">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModalLabel">{% trans "Інформація про замовлення" %}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="{% trans 'Закрити' %}"></button>
+      </div>
+      <div class="modal-body p-4">
+        {% if target_order.items.count > 0 %}
+        <!-- Заголовок для товаров заказа -->
+        <div class="mb-1">
+            <h5 class="mb-3">{% trans "Товари замовлення" %}</h5>
+            <div class="row">
+            {% for item in target_order.items.all %}
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                <div class="card-body rounded-3" style="align-content: start !important;">
+                    <h6 class="card-title my-0">
+                    <a class="nav-link text-dark p-0" href="{% url 'ViewProduct' item.product.slug %}">
+                        {{ item.product.name }}
+                    </a>
+                    </h6>
+                    <div class="d-flex align-items-center mt-2">
+                    <input type="text" class="form-control form-control-sm text-center" value="{{ item.quantity }}" readonly style="max-width: 50px;">
+                    <span class="ms-3 text-muted">
+                        {% trans "Ціна:" %} {{ item.product.price }} {% trans "грн" %}
+                    </span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        <!-- Карточка данных заказа -->
+        <div class="card">
+            <div class="card-header">
+              {% trans "Дані замовлення" %}
+            </div>
+            <div class="card-body rounded-3">
+              <p class="mb-1"><strong>{% trans "Номер замовлення:" %}</strong> #{{ target_order.id }}</p>
+              <p class="mb-1"><strong>{% trans "Статус:" %}</strong> {{ target_order.status }}</p>
+              {% if target_order.order_adress %}<p class="mb-1"><strong>{% trans "Адреса замовлення:" %}</strong> {{ target_order.order_adress }}</p>{% endif %}
+              {% if target_order.delivery_method %}<p class="mb-1"><strong>{% trans "Спосіб доставки:" %}</strong> {{ target_order.delivery_method }}</p>{% endif %}
+              {% if target_order.payment_method %}<p class="mb-1"><strong>{% trans "Спосіб оплати:" %}</strong> {{ target_order.payment_method }}</p>{% endif %}
+              {% if target_order.recipient_name %}<p class="mb-1"><strong>{% trans "Ім'я отримувача:" %}</strong> {{ target_order.recipient_name }}</p>{% endif %}
+              {% if target_order.status == "active" %}<p class="mb-1"><strong>{% trans "Оплачено:" %}</strong> {% if target_order.is_paid %}{{ "Так" }}{% else %}{{ "Ні" }}{% endif %}</p>{% endif %}
+              <p class="mb-1"><strong>{% trans "Сума:" %}</strong> {{ target_order.total }} {% trans "грн" %}</p>
+              <p class="mb-0"><strong>{% trans "Дата замовлення:" %}</strong> {{ target_order.created|date:"SHORT_DATE_FORMAT" }}</p>
+            </div>
+          </div>
+
+          <!-- Ссылка на оплату -->
+          {% if target_order.status == "Waiting_for_payment" %}
+          <a href="{% url 'PayForOrder' id=target_order.id %}" class="btn btn-primary mt-3">{% trans "Перейти до оплати" %}</a>
+          {% endif %}
+        {% else %}
+          <p class="text-muted mb-0">{% trans "Замовлення не знайдено або не містить товарів" %}</p>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {% trans "Закрити" %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Модальное окно корзины -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">{% trans "Ваш кошик" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{% trans 'Закрити' %}"></button>
+            </div>
+            <div class="modal-body">
+                {% if user.is_authenticated %}
+                    {% if not cart or cart.items.count == 0 %}
+                        <li class="list-group-item text-center">
+                            <div class="card border-0 bg-custom p-4">
+                                <div class="card-body">
+                                    <h4 class="card-title fw-bold mb-3">{% trans "Ваша корзина пуста" %}</h4>
+                                    <p class="card-text mb-3">
+                                        {% trans "Ваша корзина пуста, но не переживайте! Вы можете выбрать что-то из наших товаров." %}
+                                    </p>
+                                    <p class="card-text mb-4">
+                                        {% trans "Перейдите в магазин и добавьте товары в корзину." %}
+                                    </p>
+                                    <a href="{% url 'index' %}" class="btn btn-primary">
+                                        {% trans "Перейти в магазин" %}
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    {% else %}
+                        <ul class="list-group mb-3" id="cartItems">
+                            {% for item in cart.items.all %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" height="48" class="me-3 rounded-1" width="48">
+                                        <div>
+                                            <h6 class="my-0">
+                                                <a class="nav-link" href="{% url 'ViewProduct' item.product.slug %}">
+                                                    {{ item.product.name }}
+                                                </a>
+                                            </h6>
+                                            <div class="input-group input-group-sm mt-2">
+                                                <form method="POST" action="{% url 'CartUpdate' item.product.slug %}" class="d-flex align-items-center">
+                                                    {% csrf_token %}
+                                                    <button type="submit" name="action" value="decrease" class="btn text-primary">-</button>
+                                                    <input type="text" class="form-control text-center" value="{{ item.quantity }}" readonly style="max-width: 50px;">
+                                                    <button type="submit" name="action" value="increase" class="btn text-primary">+</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="ms-auto" style="margin-right: 1rem !important;">
+                                        {% if item.product.price_without_sale != item.product.price %}
+                                            <del class="text-muted small me-1">{{ item.product.price_without_sale|floatformat:"g" }}{% trans "грн" %}</del>
+                                            <span class="text-muted">{{ item.product.price|floatformat:"g" }}{% trans "грн" %}</span>
+                                        {% else %}
+                                            <span class="text-muted">{{ item.product.price|floatformat:"g" }}{% trans "грн" %}</span>
+                                        {% endif %}
+                                    </span>
+                                    <form method="GET" action="{% url 'RemoveFromCartProduct' item.product.slug %}">
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                        <input type="hidden" name="RemoveAll" value="True">
+                                    </form>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="d-flex justify-content-between">
+                            <h6>{% trans "Загальна сума" %}:</h6>
+                            <h6 id="totalPrice">
+                                {% if cart.total_without_sale != cart.total %}
+                                    <del class="text-muted small me-2">{{ cart.total_without_sale|floatformat:"g" }}{% trans "грн" %}</del>
+                                    <span class="text-danger">{{ cart.total|floatformat:"g" }}{% trans "грн" %}</span>
+                                {% else %}
+                                    <span class="text-muted">{{ cart.total|floatformat:"g" }}{% trans "грн" %}</span>
+                                {% endif %}
+                            </h6>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {% if cart.count == 0 %}
+                        <li class="list-group-item text-center">
+                            <div class="card border-0 bg-custom p-4">
+                                <div class="card-body">
+                                    <h4 class="card-title fw-bold mb-3">{% trans "Ваша корзина пуста" %}</h4>
+                                    <p class="card-text mb-3">
+                                        {% trans "Ваша корзина пуста, но не переживайте! Вы можете выбрать что-то из наших товаров." %}
+                                    </p>
+                                    <p class="card-text mb-4">
+                                        {% trans "Перейдите в магазин и добавьте товары в корзину." %}
+                                    </p>
+                                    <a href="{% url 'index' %}" class="btn btn-primary">
+                                        {% trans "Перейти в магазин" %}
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    {% else %}
+                        <ul class="list-group mb-3" id="cartItems">
+                            {% for item in cart %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" height="48" class="me-3 rounded-1" width="48">
+                                            <div>
+                                                <h6 class="my-0">
+                                                    <a class="nav-link" href="{% url 'ViewProduct' item.product.slug %}">
+                                                        {{ item.product.name }}
+                                                    </a>
+                                                </h6>
+                                                <div class="input-group input-group-sm mt-2">
+                                                    <form method="POST" action="{% url 'CartUpdate' item.product.slug %}" class="d-flex align-items-center">
+                                                        {% csrf_token %}
+                                                        <button type="submit" name="action" value="decrease" class="btn text-primary">-</button>
+                                                        <input type="text" class="form-control text-center" value="{{ item.quantity }}" readonly style="max-width: 50px;">
+                                                        <button type="submit" name="action" value="increase" class="btn text-primary">+</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <span class="ms-auto" style="margin-right: 1rem !important;">
+                                        {% if item.product.price_without_sale != item.product.price %}
+                                            <del class="text-muted small me-1">{{ item.product.price_without_sale|floatformat:"g" }}{% trans "грн" %}</del>
+                                            <span class="text-muted">{{ item.product.price|floatformat:"g" }}{% trans "грн" %}</span>
+                                        {% else %}
+                                            <span class="text-muted">{{ item.product.price|floatformat:"g" }}{% trans "грн" %}</span>
+                                        {% endif %}
+                                    </span>
+                                    <form method="GET" action="{% url 'RemoveFromCartProduct' item.product.slug %}">
+                                        <button class="btn btn-outline-danger btn-sm">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                        <input type="hidden" name="RemoveAll" value="True">
+                                    </form>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    <div class="d-flex justify-content-between">
+                        <h6>{% trans "Загальна сума" %}:</h6>
+                        <h6 id="totalPrice">
+                            {% if cart.get_total_price_without_sale and cart.get_total_price_without_sale != cart.get_total_price %}
+                                <del class="text-muted small me-2">{{ cart.get_total_price_without_sale|floatformat:"g" }}{% trans "грн" %}</del>
+                                <span class="text-danger">{{ cart.get_total_price|floatformat:"g" }}{% trans "грн" %}</span>
+                            {% else %}
+                                <span class="text-muted">{{ cart.get_total_price|floatformat:"g" }}{% trans "грн" %}</span>
+                            {% endif %}
+                        </h6>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>   
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Закрити" %}</button>
+                {% if user.is_authenticated %}{% if cart.total > 0 %}<a href="{% url 'checkout' %}" class="btn btn-primary">{% trans "Перейти до оформлення" %}</a>{% endif %}{% else %}{% if cart.get_total_price > 0 %}<a href="{% url 'checkout' %}" class="btn btn-primary">{% trans "Перейти до оформлення" %}</a>{% endif %}{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Личный кабинет пользователя -->
+<div class="container mt-4">
+    <div class="row">
+        <!-- Боковая панель -->
+        <div class="col-md-3 mb-3">
+            <div class="list-group">
+                <a href="{% url 'personal_account' %}" class="list-group-item list-group-item-action active">
+                    <i class="bi bi-person"></i> {% trans "Мій профіль" %}
+                </a>
+                <a href="{% url 'view_messages' %}" class="list-group-item list-group-item-action">
+                    {% if unread_messages > 0 %}<span class="translate-middle badge rounded-pill bg-danger" style="position: absolute; margin-top: 5px; margin-left: 2px;">{{ unread_messages }}<span class="visually-hidden">{% trans "непрочитанные сообщения" %}</span></span>{% endif %}<i class="bi bi-chat-dots"></i> {% trans "Уведомления" %}
+                </a>
+                <a href="{% url 'orders' %}" class="list-group-item list-group-item-action">
+                    <i class="bi bi-bag"></i> {% trans "Мої замовлення" %}
+                </a>
+                <a href="{% url 'wishlist' %}" class="list-group-item list-group-item-action">
+                    <i class="bi bi-heart"></i> {% trans "Вибране" %}
+                </a>
+                <a href="{% url 'ChangePassword' %}" class="list-group-item list-group-item-action"> 
+                    <i class="bi bi-lock"></i> {% trans "Змінити пароль" %}
+                </a>
+                <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">
+                    <i class="bi bi-box-arrow-right"></i> {% trans "Вихід" %}
+                </a>
+            </div>
+        </div>

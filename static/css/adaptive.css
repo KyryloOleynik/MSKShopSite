@@ -1,0 +1,16 @@
+@media screen and (max-width: 425px) {
+    .table {
+        font-size: small;
+    }
+}
+@media screen and (max-width: 991px) {
+    #chat_icon_all {
+        margin-bottom: 4.5rem !important;
+    }
+    footer.bg-light.text-dark.py-4.mt-4.border-top {
+        padding-bottom: 64px !important;
+    }
+    .carousel-caption.text-white p{
+        font-size: small !important;
+    }
+}

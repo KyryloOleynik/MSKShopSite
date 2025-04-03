@@ -1,0 +1,70 @@
+/* Мобільне меню */
+.mobile-menu {
+    display: none; /* За замовчуванням приховане */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+    padding: 1rem;
+    overflow-y: auto;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.mobile-menu.show {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+.close-menu {
+    margin-right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #000;
+    z-index: 1051; /* Щоб кнопка була поверх іншого контенту */
+}
+
+.close-menu:hover {
+    color: #ff0000;
+    transform: scale(1.1);
+}
+
+.close-menu:active {
+    transform: scale(0.9);
+}
+
+/* Контейнер для пошуку, кнопок і мови */
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Вирівнювання форми пошуку */
+.mobile-menu form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px; /* Обмежуємо ширину форми */
+    margin-top: 1rem;
+}
+
+.mobile-menu .nav-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.language-switcher-mobile {
+    text-align: center;
+}
+
+.language-switcher-mobile button {
+    margin: 0.5rem;
+}

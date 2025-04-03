@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    {% load i18n %}
+    <link rel="shortcut icon" href="{% static '/img/logo_min.png' %}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSK Shop</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/adaptive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+</head>
+<body>
+{% include "base_menu.html" %}
+
+<div class="container my-5">
+    <h1 class="text-center mb-5">{% trans "Про нас та гарантії" %}</h1>
+    <div class="row g-4">
+        <!-- Блок "Про нас" -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg h-100">
+                <div class="card-body rounded-3">
+                    <h3 class="card-title mb-3">
+                        <i class="bi bi-info-circle-fill text-primary me-2"></i>
+                        {% trans "Про нас" %}
+                    </h3>
+                    <p class="card-text">
+                        {% trans "Наша компанія – інтернет-магазин, що пропонує тільки якісні товари за наддоступними цінами. Ми орієнтовані на клієнта та прагнемо забезпечити найкращий сервіс і підтримку на кожному етапі покупки." %}
+                    </p>
+                    <p class="card-text">
+                        {% trans "Наші професіонали завжди готові допомогти вам з вибором товару та надати консультацію. Ми впевнені в якості нашої продукції і дбаємо про кожного клієнта." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Блок "Гарантии" -->
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg h-100">
+                <div class="card-body rounded-3 h-100" style="align-content: start !important;">
+                    <h3 class="card-title mb-3">
+                        <i class="bi bi-shield-check text-success me-2"></i>
+                        {% trans "Гарантії" %}
+                    </h3>
+                    <p class="card-text">
+                        {% trans "В соответствии с законодательством РФ мы предоставляем гарантию на товары и право на возврат средств при обнаружении дефектов." %}
+                    </p>
+                    <p class="card-text">
+                        {% trans "Вы можете проверить товар при получении и убедиться в его соответствии заявленным характеристикам." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <h2 class="text-center mb-4">{% trans "Наші послуги" %}</h2>
+            <div class="row g-4">
+                <!-- Доставка товаров -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-lg h-100">
+                        <div class="card-body text-center" style="align-content: start !important;">
+                            <i class="bi bi-truck display-4 text-primary mb-3"></i>
+                            <h4 class="card-title">{% trans "Доставка товарів" %}</h4>
+                            <p class="card-text">
+                                {% trans "Ми забезпечуємо швидку та надійну кур'єрську доставку ваших замовлень прямо до дверей у Дніпрі та Берліні." %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Оплата -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-lg h-100">
+                        <div class="card-body text-center" style="align-content: start !important;">
+                            <i class="bi bi-credit-card display-4 text-success mb-3"></i>
+                            <h4 class="card-title">{% trans "Оплата" %}</h4>
+                            <p class="card-text">
+                                {% trans "Оплату за замовлення ви здійснюєте тільки після отримання та перевірки посилки: наложеним платежем у відділенні або безпосередньо кур'єру." %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Возврат товаров -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-lg h-100">
+                        <div class="card-body text-center" style="align-content: start !important;">
+                            <i class="bi bi-arrow-repeat display-4 text-danger mb-3"></i>
+                            <h4 class="card-title">{% trans "Повернення товарів" %}</h4>
+                            <p class="card-text">
+                                {% trans "Согласно Закону РФ «О защите прав потребителей», покупатель вправе вернуть товар надлежащего качества в течение 14 дней с момента покупки при сохранении товарного вида и упаковки." %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- Раздел: Почему именно мы? -->
+                <div class="container my-5">
+                    <h2 class="text-center mb-5">{% trans "Чому саме ми?" %}</h2>
+                    <div class="row g-4">
+                        <!-- Карточка 1: Цена -->
+                        <div class="col-md-3">
+                            <div class="card border-0 shadow-lg h-100">
+                                <div class="card-body text-center" style="align-content: start !important;">
+                                    <i class="bi bi-cash-stack display-4 text-success mb-3"></i>
+                                    <h4 class="card-title">{% trans "Ціна" %}</h4>
+                                    <p class="card-text">
+                                        {% trans "У нашому магазині ви знайдете ціни, що становлять лише 70-65% від цін у інших магазинах." %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карточка 2: Качество -->
+                        <div class="col-md-3">
+                            <div class="card border-0 shadow-lg h-100">
+                                <div class="card-body text-center" style="align-content: start !important;">
+                                    <i class="bi bi-award display-4 text-primary mb-3"></i>
+                                    <h4 class="card-title">{% trans "Якість" %}</h4>
+                                    <p class="card-text">
+                                        {% trans "Ми пропонуємо лише перевірені товари високої якості, що відповідають усім стандартам." %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карточка 3: Скорость -->
+                        <div class="col-md-3">
+                            <div class="card border-0 shadow-lg h-100">
+                                <div class="card-body text-center" style="align-content: start !important;">
+                                    <i class="bi bi-speedometer2 display-4 text-warning mb-3"></i>
+                                    <h4 class="card-title">{% trans "Швидкість" %}</h4>
+                                    <p class="card-text">
+                                        {% trans "Швидке оформлення замовлень та оперативна доставка — наш пріоритет." %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Карточка 4: Профемеонализм -->
+                        <div class="col-md-3">
+                            <div class="card border-0 shadow-lg h-100">
+                                <div class="card-body text-center" style="align-content: start !important;">
+                                    <i class="bi bi-people display-4 text-danger mb-3"></i>
+                                    <h4 class="card-title">{% trans "Професіоналізм" %}</h4>
+                                    <p class="card-text">
+                                        {% trans "Наша команда складається з досвідчених спеціалістів, готових допомогти вам у будь-якій ситуації." %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Раздел: Курьерская доставка -->
+                <div class="container my-5">
+                    <h2 class="text-center mb-5">{% trans "Кур'єрська доставка" %}</h2>
+                    <div class="row g-4">
+                        <!-- Доставка в Москве -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-lg h-100">
+                                <div class="card-body" style="align-content: start !important;">
+                                    <h3 class="card-title mb-3">
+                                        <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                                        {% trans "Дніпро" %}
+                                    </h3>
+                                    <p class="card-text">
+                                        {% trans "Мы предоставляем курьерскую доставку по Москве. Курьер доставит заказ в течение 1-3 дней с момента оформления." %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Доставка в Берлине -->
+                        <div class="col-md-6">
+                            <div class="card border-0 shadow-lg h-100">
+                                <div class="card-body" style="align-content: start !important;">
+                                    <h3 class="card-title mb-3">
+                                        <i class="bi bi-geo-alt-fill text-success me-2"></i>
+                                        {% trans "Берлін" %}
+                                    </h3>
+                                    <p class="card-text">
+                                        {% trans "Также мы предоставляем курьерскую доставку по Берлину. Курьер доставит заказ в течение 4-5 дней с момента оформления." %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+                <div class="container mt-5">
+                    <h2 class="text-center mb-5">{% trans "Почему такие низкие цены?" %}</h2>
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body rounded-3">
+                            <h3 class="card-title text-center mb-3">
+                                <i class="bi bi-tags-fill text-info me-2"></i>
+                                {% trans "Почему такие низкие цены?" %}
+                            </h3>
+                            <p class="card-text text-center">
+                                {% trans "Мы тщательно ищем самые выгодные предложения на Avito и eBay среди абсолютно новых товаров. Это позволяет нам минимизировать стоимость и предложить вам продукцию по ценам на 30-35% ниже рыночных. При этом мы гарантируем, что все товары, которые вы заказываете у нас, будут новыми и нераспакованными." %}
+                            </p>
+                        </div>
+                    </div>
+                </div> 
+        </div> 
+    </div>
+</div>
+
+
+<footer class="bg-light text-dark py-4 mt-4 border-top">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 mb-2">
+                <a href="{% url 'about_us' %}" class="text-decoration-none text-dark me-3">{% trans "Про нас та гарантії" %}</a>
+            </div>
+            <div class="col-md-6">
+                <p class="mb-0">&copy; {% trans "2024 Інтернет-магазин. Всі права захищені." %}</p>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script type="module" src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

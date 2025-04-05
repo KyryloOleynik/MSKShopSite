@@ -10679,3 +10679,97 @@ SyntaxError: cannot assign to attribute here. Maybe you meant '==' instead of '=
 [2025-04-05 17:25:19 +0000] [553] [ERROR] Connection in use: ('0.0.0.0', 8000)
 [2025-04-05 17:25:19 +0000] [553] [ERROR] connection to ('0.0.0.0', 8000) failed: [Errno 98] Address already in use
 [2025-04-05 17:25:20 +0000] [553] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2025-04-05 18:17:47 +0000] [657] [INFO] Worker exiting (pid: 657)
+[2025-04-05 18:17:47 +0000] [642] [INFO] Worker exiting (pid: 642)
+[2025-04-05 18:17:47 +0000] [647] [INFO] Worker exiting (pid: 647)
+[2025-04-05 18:17:47 +0000] [551] [INFO] Handling signal: term
+[2025-04-05 18:17:47 +0000] [551] [ERROR] Worker (pid:642) was sent SIGTERM!
+[2025-04-05 18:17:47 +0000] [551] [ERROR] Worker (pid:647) was sent SIGTERM!
+[2025-04-05 18:17:47 +0000] [551] [ERROR] Worker (pid:657) was sent SIGTERM!
+[2025-04-05 18:17:47 +0000] [551] [INFO] Shutting down: Master
+[2025-04-05 18:17:47 +0000] [4632] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:17:47 +0000] [4632] [INFO] Listening at: http://127.0.0.1:8000 (4632)
+[2025-04-05 18:17:47 +0000] [4632] [INFO] Using worker: sync
+[2025-04-05 18:17:47 +0000] [4634] [INFO] Booting worker with pid: 4634
+[2025-04-05 18:17:47 +0000] [4635] [INFO] Booting worker with pid: 4635
+[2025-04-05 18:17:47 +0000] [4636] [INFO] Booting worker with pid: 4636
+[2025-04-05 18:20:05 +0000] [4635] [INFO] Worker exiting (pid: 4635)
+[2025-04-05 18:20:05 +0000] [4634] [INFO] Worker exiting (pid: 4634)
+[2025-04-05 18:20:05 +0000] [4636] [INFO] Worker exiting (pid: 4636)
+[2025-04-05 18:20:05 +0000] [4632] [INFO] Handling signal: term
+[2025-04-05 18:20:05 +0000] [4632] [ERROR] Worker (pid:4636) was sent SIGTERM!
+[2025-04-05 18:20:05 +0000] [4632] [ERROR] Worker (pid:4634) was sent SIGTERM!
+[2025-04-05 18:20:05 +0000] [4632] [ERROR] Worker (pid:4635) was sent SIGTERM!
+[2025-04-05 18:20:05 +0000] [4632] [INFO] Shutting down: Master
+[2025-04-05 18:20:05 +0000] [4722] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:20:05 +0000] [4722] [INFO] Listening at: http://127.0.0.1:8000 (4722)
+[2025-04-05 18:20:05 +0000] [4722] [INFO] Using worker: sync
+[2025-04-05 18:20:05 +0000] [4723] [INFO] Booting worker with pid: 4723
+[2025-04-05 18:20:05 +0000] [4724] [INFO] Booting worker with pid: 4724
+[2025-04-05 18:20:05 +0000] [4725] [INFO] Booting worker with pid: 4725
+[2025-04-05 18:49:37 +0000] [4725] [INFO] Worker exiting (pid: 4725)
+[2025-04-05 18:49:37 +0000] [4724] [INFO] Worker exiting (pid: 4724)
+[2025-04-05 18:49:37 +0000] [4723] [INFO] Worker exiting (pid: 4723)
+[2025-04-05 18:49:37 +0000] [4722] [INFO] Handling signal: term
+[2025-04-05 18:49:37 +0000] [4722] [ERROR] Worker (pid:4724) was sent SIGTERM!
+[2025-04-05 18:49:37 +0000] [4722] [ERROR] Worker (pid:4723) was sent SIGTERM!
+[2025-04-05 18:49:37 +0000] [4722] [ERROR] Worker (pid:4725) was sent SIGTERM!
+[2025-04-05 18:49:37 +0000] [4722] [INFO] Shutting down: Master
+[2025-04-05 18:49:37 +0000] [5273] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:49:37 +0000] [5273] [INFO] Listening at: http://127.0.0.1:8000 (5273)
+[2025-04-05 18:49:37 +0000] [5273] [INFO] Using worker: sync
+[2025-04-05 18:49:37 +0000] [5275] [INFO] Booting worker with pid: 5275
+[2025-04-05 18:49:38 +0000] [5276] [INFO] Booting worker with pid: 5276
+[2025-04-05 18:49:38 +0000] [5277] [INFO] Booting worker with pid: 5277
+[2025-04-05 18:50:09 +0000] [5273] [INFO] Handling signal: term
+[2025-04-05 18:50:09 +0000] [5275] [INFO] Worker exiting (pid: 5275)
+[2025-04-05 18:50:09 +0000] [5276] [INFO] Worker exiting (pid: 5276)
+[2025-04-05 18:50:09 +0000] [5277] [INFO] Worker exiting (pid: 5277)
+[2025-04-05 18:50:09 +0000] [5273] [INFO] Shutting down: Master
+[2025-04-05 18:50:09 +0000] [5289] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:50:09 +0000] [5289] [INFO] Listening at: http://127.0.0.1:8000 (5289)
+[2025-04-05 18:50:09 +0000] [5289] [INFO] Using worker: sync
+[2025-04-05 18:50:09 +0000] [5290] [INFO] Booting worker with pid: 5290
+[2025-04-05 18:50:09 +0000] [5291] [INFO] Booting worker with pid: 5291
+[2025-04-05 18:50:09 +0000] [5292] [INFO] Booting worker with pid: 5292
+[2025-04-05 18:51:09 +0000] [5292] [INFO] Worker exiting (pid: 5292)
+[2025-04-05 18:51:09 +0000] [5291] [INFO] Worker exiting (pid: 5291)
+[2025-04-05 18:51:09 +0000] [5289] [INFO] Handling signal: term
+[2025-04-05 18:51:09 +0000] [5290] [INFO] Worker exiting (pid: 5290)
+[2025-04-05 18:51:09 +0000] [5289] [ERROR] Worker (pid:5292) was sent SIGTERM!
+[2025-04-05 18:51:09 +0000] [5289] [ERROR] Worker (pid:5291) was sent SIGTERM!
+[2025-04-05 18:51:09 +0000] [5289] [INFO] Shutting down: Master
+[2025-04-05 18:51:09 +0000] [5331] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:51:09 +0000] [5331] [INFO] Listening at: http://127.0.0.1:8000 (5331)
+[2025-04-05 18:51:09 +0000] [5331] [INFO] Using worker: sync
+[2025-04-05 18:51:09 +0000] [5332] [INFO] Booting worker with pid: 5332
+[2025-04-05 18:51:09 +0000] [5333] [INFO] Booting worker with pid: 5333
+[2025-04-05 18:51:09 +0000] [5334] [INFO] Booting worker with pid: 5334
+[2025-04-05 18:54:22 +0000] [5332] [INFO] Worker exiting (pid: 5332)
+[2025-04-05 18:54:22 +0000] [5334] [INFO] Worker exiting (pid: 5334)
+[2025-04-05 18:54:22 +0000] [5333] [INFO] Worker exiting (pid: 5333)
+[2025-04-05 18:54:22 +0000] [5331] [INFO] Handling signal: term
+[2025-04-05 18:54:22 +0000] [5331] [ERROR] Worker (pid:5332) was sent SIGTERM!
+[2025-04-05 18:54:22 +0000] [5331] [ERROR] Worker (pid:5333) was sent SIGTERM!
+[2025-04-05 18:54:22 +0000] [5331] [ERROR] Worker (pid:5334) was sent SIGTERM!
+[2025-04-05 18:54:23 +0000] [5331] [INFO] Shutting down: Master
+[2025-04-05 18:54:23 +0000] [5382] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:54:23 +0000] [5382] [INFO] Listening at: http://127.0.0.1:8000 (5382)
+[2025-04-05 18:54:23 +0000] [5382] [INFO] Using worker: sync
+[2025-04-05 18:54:23 +0000] [5383] [INFO] Booting worker with pid: 5383
+[2025-04-05 18:54:23 +0000] [5384] [INFO] Booting worker with pid: 5384
+[2025-04-05 18:54:23 +0000] [5385] [INFO] Booting worker with pid: 5385
+[2025-04-05 18:57:22 +0000] [5383] [INFO] Worker exiting (pid: 5383)
+[2025-04-05 18:57:22 +0000] [5384] [INFO] Worker exiting (pid: 5384)
+[2025-04-05 18:57:22 +0000] [5385] [INFO] Worker exiting (pid: 5385)
+[2025-04-05 18:57:22 +0000] [5382] [INFO] Handling signal: term
+[2025-04-05 18:57:22 +0000] [5382] [ERROR] Worker (pid:5384) was sent SIGTERM!
+[2025-04-05 18:57:22 +0000] [5382] [ERROR] Worker (pid:5383) was sent SIGTERM!
+[2025-04-05 18:57:22 +0000] [5382] [ERROR] Worker (pid:5385) was sent SIGTERM!
+[2025-04-05 18:57:22 +0000] [5382] [INFO] Shutting down: Master
+[2025-04-05 18:57:22 +0000] [5627] [INFO] Starting gunicorn 23.0.0
+[2025-04-05 18:57:22 +0000] [5627] [INFO] Listening at: http://127.0.0.1:8000 (5627)
+[2025-04-05 18:57:22 +0000] [5627] [INFO] Using worker: sync
+[2025-04-05 18:57:22 +0000] [5629] [INFO] Booting worker with pid: 5629
+[2025-04-05 18:57:22 +0000] [5630] [INFO] Booting worker with pid: 5630
+[2025-04-05 18:57:22 +0000] [5631] [INFO] Booting worker with pid: 5631

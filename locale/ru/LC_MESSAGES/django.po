@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 10:22+0000\n"
+"POT-Creation-Date: 2025-04-05 14:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: SmartZamovApp/admin.py:75 SmartZamovApp/admin.py:82
-#: SmartZamovApp/forms.py:71 SmartZamovApp/forms.py:118
+#: SmartZamovApp/forms.py:88 SmartZamovApp/forms.py:135
 #: templates/checkout_page.html:190
 msgid "Номер телефону"
 msgstr "Номер телефона"
@@ -42,7 +42,7 @@ msgstr "Id пользователя в Телеграм"
 msgid "Нікнейм: "
 msgstr "Никнейм: "
 
-#: SmartZamovApp/forms.py:12 SmartZamovApp/forms.py:70
+#: SmartZamovApp/forms.py:12 SmartZamovApp/forms.py:87
 msgid "Введіть імя користувача"
 msgstr "Введите имя пользователя"
 
@@ -50,8 +50,8 @@ msgstr "Введите имя пользователя"
 msgid "Електронна пошта: "
 msgstr "Электронная почта: "
 
-#: SmartZamovApp/forms.py:13 SmartZamovApp/forms.py:67
-#: SmartZamovApp/forms.py:114
+#: SmartZamovApp/forms.py:13 SmartZamovApp/forms.py:84
+#: SmartZamovApp/forms.py:131
 msgid "Введіть електронну пошту"
 msgstr "Введите электронную почту"
 
@@ -87,13 +87,13 @@ msgstr "Номер телефона: "
 msgid "Введіть ваш номер телефону"
 msgstr "Введите ваш номер телефона"
 
-#: SmartZamovApp/forms.py:18 SmartZamovApp/forms.py:160
-msgid "Адреса (Область, місто, вулиця): "
-msgstr "Адрес (Область, город, улица)"
+#: SmartZamovApp/forms.py:18
+msgid "Адрес (Область, город, слово 'улица' + название улицы + номер дома): "
+msgstr "Адрес (Область, город, слово 'улица' + название улицы + номер дома): "
 
 #: SmartZamovApp/forms.py:18
-msgid "Введіть вашу адрессу"
-msgstr "Введите ваш адрес"
+msgid "Московская область, Москва, улица Тверская 10."
+msgstr "Московская область, Москва, улица Тверская 10."
 
 #: SmartZamovApp/forms.py:25
 msgid "Ім'я не повинно містити цифр"
@@ -119,160 +119,200 @@ msgstr "Отчество не должно содержать цифр"
 msgid "По батькові занадто коротке"
 msgstr "Отчество слишком короткое"
 
-#: SmartZamovApp/forms.py:56 SmartZamovApp/forms.py:170
-msgid "Будь ласка, введіть адресу у вказаному форматі"
-msgstr "Пожалуйста, введите адрес в указанном формате"
+#: SmartZamovApp/forms.py:58
+msgid ""
+"Формат адреса неверный. Пожалуйста, введите адрес в следующем формате: "
+"(Область, город, слово 'улица' + название улицы + номер дома). Плюсики и "
+"другие символы не используются. Пример: Московская область, Москва, улица "
+"Тверская 10."
+msgstr ""
+"Формат адреса неверный. Пожалуйста, введите адрес в следующем формате: "
+"(Область, город, слово 'улица' + название улицы + номер дома). Плюсики и "
+"другие символы не используются. Пример: Московская область, Москва, улица "
+"Тверская 10."
 
-#: SmartZamovApp/forms.py:59 SmartZamovApp/forms.py:173
-msgid "Будь ласка, введіть коректну адресу"
-msgstr "Пожалуйста, введите правильный адрес"
+#: SmartZamovApp/forms.py:63
+msgid ""
+"Название области должно содержать только буквы и быть длиннее двух символов."
+msgstr ""
+"Название области должно содержать только буквы и быть длиннее двух символов."
 
-#: SmartZamovApp/forms.py:67 SmartZamovApp/forms.py:105
-#: SmartZamovApp/forms.py:114
+#: SmartZamovApp/forms.py:66
+msgid ""
+"Название города должно содержать только буквы и быть длиннее двух символов."
+msgstr ""
+"Название города должно содержать только буквы и быть длиннее двух символов."
+
+#: SmartZamovApp/forms.py:69
+msgid "Необходимо указать слово 'улица' в названии улицы."
+msgstr "Необходимо указать слово 'улица' в названии улицы."
+
+#: SmartZamovApp/forms.py:72
+msgid "После слова 'улица' должно следовать название улицы и номер дома."
+msgstr "После слова 'улица' должно следовать название улицы и номер дома."
+
+#: SmartZamovApp/forms.py:75
+msgid "Номер дома должен быть числом."
+msgstr "Номер дома должен быть числом."
+
+#: SmartZamovApp/forms.py:84 SmartZamovApp/forms.py:122
+#: SmartZamovApp/forms.py:131
 msgid "Електронна пошта"
 msgstr "Электронная почта"
 
-#: SmartZamovApp/forms.py:68 SmartZamovApp/forms.py:106
+#: SmartZamovApp/forms.py:85 SmartZamovApp/forms.py:123
 msgid "Пароль"
 msgstr "Пароль"
 
-#: SmartZamovApp/forms.py:68
+#: SmartZamovApp/forms.py:85
 msgid "Введіть пароль"
 msgstr "Введите пароль"
 
-#: SmartZamovApp/forms.py:69
+#: SmartZamovApp/forms.py:86
 msgid "Підтвердження паролю"
 msgstr "Подтверждение пароля"
 
-#: SmartZamovApp/forms.py:69
+#: SmartZamovApp/forms.py:86
 msgid "Підтвердіть пароль"
 msgstr "Подтвердите пароль"
 
-#: SmartZamovApp/forms.py:70
+#: SmartZamovApp/forms.py:87
 msgid "Никнейм користувача"
 msgstr "Никнейм пользователя"
 
-#: SmartZamovApp/forms.py:71
+#: SmartZamovApp/forms.py:88
 msgid "Введіть номер телефону"
 msgstr "Введите номер телефона"
 
-#: SmartZamovApp/forms.py:80
+#: SmartZamovApp/forms.py:97
 msgid "Користувач з таким номером телефону вже існує"
 msgstr "Пользователь с таким номером телефона уже существует"
 
-#: SmartZamovApp/forms.py:86
+#: SmartZamovApp/forms.py:103
 msgid "Користувач з таким email вже існує"
 msgstr "Пользователь с таким email уже существует"
 
-#: SmartZamovApp/forms.py:105
+#: SmartZamovApp/forms.py:122
 msgid "Введіть вашу електронну пошту"
 msgstr "Введите вашу электронную почту"
 
-#: SmartZamovApp/forms.py:106
+#: SmartZamovApp/forms.py:123
 msgid "Введіть ваш пароль"
 msgstr "Введите ваш пароль"
 
-#: SmartZamovApp/forms.py:109
+#: SmartZamovApp/forms.py:126
 msgid "Старий пароль"
 msgstr "Старый пароль"
 
-#: SmartZamovApp/forms.py:109
+#: SmartZamovApp/forms.py:126
 msgid "Введіть старий пароль"
 msgstr "Введите старый пароль"
 
-#: SmartZamovApp/forms.py:110
+#: SmartZamovApp/forms.py:127
 msgid "Новий пароль"
 msgstr "Новый пароль"
 
-#: SmartZamovApp/forms.py:110
+#: SmartZamovApp/forms.py:127
 msgid "Введіть новий пароль"
 msgstr "Введите новый пароль"
 
-#: SmartZamovApp/forms.py:111
+#: SmartZamovApp/forms.py:128
 msgid "Підтвердіть новий пароль"
 msgstr "Подтвердите новый пароль"
 
-#: SmartZamovApp/forms.py:123
+#: SmartZamovApp/forms.py:140
 msgid "Ім'я отримувача"
 msgstr "Имя получателя"
 
-#: SmartZamovApp/forms.py:124
+#: SmartZamovApp/forms.py:141
 msgid "Іван"
 msgstr "Иван"
 
-#: SmartZamovApp/forms.py:130
+#: SmartZamovApp/forms.py:147
 msgid "Ім'я повинно містити лише літери"
 msgstr "Имя должно содержать только буквы"
 
-#: SmartZamovApp/forms.py:132
+#: SmartZamovApp/forms.py:149
 msgid "Ім'я повинно бути не менше 2 символів"
 msgstr "Имя должно быть не менее 2 символов"
 
-#: SmartZamovApp/forms.py:136
+#: SmartZamovApp/forms.py:153
 msgid "Прізвище отримувача"
 msgstr "Фамилия получателя"
 
-#: SmartZamovApp/forms.py:137
+#: SmartZamovApp/forms.py:154
 msgid "Іванов"
 msgstr "Иванов"
 
-#: SmartZamovApp/forms.py:143
+#: SmartZamovApp/forms.py:160
 msgid "Прізвище повинно містити лише літери"
 msgstr "Фамилия должна содержать только буквы"
 
-#: SmartZamovApp/forms.py:145
+#: SmartZamovApp/forms.py:162
 msgid "Прізвище повинно бути не менше 2 символів"
 msgstr "Фамилия должна быть не менее 2 символов"
 
-#: SmartZamovApp/forms.py:149
+#: SmartZamovApp/forms.py:166
 msgid "По батькові отримувача"
 msgstr "Отчество получателя"
 
-#: SmartZamovApp/forms.py:150
+#: SmartZamovApp/forms.py:167
 msgid "Іванович"
 msgstr "Иванович"
 
-#: SmartZamovApp/forms.py:156
+#: SmartZamovApp/forms.py:173
 msgid "По батькові повинно містити лише літери"
 msgstr "Отчество должно содержать только буквы"
 
-#: SmartZamovApp/forms.py:161
+#: SmartZamovApp/forms.py:177
+msgid "Адреса (Область, місто, вулиця): "
+msgstr "Адрес (Область, город, улица)"
+
+#: SmartZamovApp/forms.py:178
 msgid "Самарская область, Самара, ул. Ленина"
 msgstr "Самарская область, Самара, ул. Ленина"
 
-#: SmartZamovApp/forms.py:167
+#: SmartZamovApp/forms.py:184
 msgid "Адреса не може бути порожньою"
 msgstr "Адрес не может быть пустым"
 
-#: SmartZamovApp/forms.py:177
+#: SmartZamovApp/forms.py:187
+msgid "Будь ласка, введіть адресу у вказаному форматі"
+msgstr "Пожалуйста, введите адрес в указанном формате"
+
+#: SmartZamovApp/forms.py:190
+msgid "Будь ласка, введіть коректну адресу"
+msgstr "Пожалуйста, введите правильный адрес"
+
+#: SmartZamovApp/forms.py:194
 msgid "Спосіб доставки"
 msgstr "Способ доставки"
 
-#: SmartZamovApp/forms.py:191
+#: SmartZamovApp/forms.py:208
 msgid "Вибраний спосіб доставки некоректний"
 msgstr "Выбранный способ доставки некорректен"
 
-#: SmartZamovApp/forms.py:196 templates/checkout_page.html:194
+#: SmartZamovApp/forms.py:213 templates/checkout_page.html:194
 msgid "Спосіб оплати"
 msgstr "Способ оплаты"
 
-#: SmartZamovApp/forms.py:208
+#: SmartZamovApp/forms.py:225
 msgid "Вибраний спосіб оплати некоректний"
 msgstr "Выбранный способ оплаты некорректен"
 
-#: SmartZamovApp/forms.py:221
+#: SmartZamovApp/forms.py:238
 msgid "Новый пароль"
 msgstr "Новый пароль"
 
-#: SmartZamovApp/forms.py:221
+#: SmartZamovApp/forms.py:238
 msgid "Введите новый пароль"
 msgstr "Введите новый пароль"
 
-#: SmartZamovApp/forms.py:222
+#: SmartZamovApp/forms.py:239
 msgid "Подтверждение пароля"
 msgstr "Подтверждение пароля"
 
-#: SmartZamovApp/forms.py:222
+#: SmartZamovApp/forms.py:239
 msgid "Подтвердите новый пароль"
 msgstr "Подтвердите новый пароль"
 
@@ -313,11 +353,11 @@ msgstr "Пароль успешно изменён!"
 
 #: SmartZamovApp/views.py:433
 msgid ""
-"Ми відправили вам інструкції для скидання пароля на вказану вами електронну "
-"адресу."
+"Ми надіслали інструкції для скидання пароля на вказану вами електронну "
+"адресу. Якщо ви не бачите нашого листа, будь ласка, перевірте папку \"Спам\"."
 msgstr ""
 "Мы отправили вам инструкции для сброса пароля на указанную вами электронную "
-"адресу."
+"адресу. Если вы не видите наше письмо, пожалуйста, проверьте папку \"Спам\"."
 
 #: SmartZamovApp/views.py:522
 msgid "В кошику ще нічого немає!"
@@ -327,7 +367,11 @@ msgstr "В корзине ничего нет!"
 msgid "Введені дані є некоректними або не заповнені!"
 msgstr "Введенные данные некорректны или не заполнены!"
 
-#: SmartZamovApp/views.py:661
+#: SmartZamovApp/views.py:617
+msgid "Вы не заполнили информацию о заказе!"
+msgstr "Вы не заполнили информацию о заказе!"
+
+#: SmartZamovApp/views.py:672
 msgid ""
 "Пароль успішно змінено! Тепер ви можете увійти до свого акаунту, "
 "використовуючи його."
@@ -1079,35 +1123,75 @@ msgstr "Если проблема не исчезнет, обратитесь в
 msgid "Спробувати ще раз"
 msgstr "Попробовать снова"
 
-#: templates/payment_for_the_order.html:9
-msgid "MSK Shop - Оплата через Telegram"
-msgstr "MSK Shop - Оплата через Telegram"
+#: templates/payment_for_the_order.html:8
+msgid "MSK Shop - Оплата"
+msgstr "MSK Shop - Оплата"
 
-#: templates/payment_for_the_order.html:25
+#: templates/payment_for_the_order.html:427
+msgid "Выберите способ оплаты"
+msgstr "Выберите способ оплаты"
+
+#: templates/payment_for_the_order.html:430
+msgid "Оплата картой"
+msgstr "Оплата картой"
+
+#: templates/payment_for_the_order.html:432
+msgid "Оплата через Telegram"
+msgstr "Оплата через Telegram-бота"
+
+#: templates/payment_for_the_order.html:451
+msgid "Вы оплачиваете"
+msgstr "Вы оплачиваете"
+
+#: templates/payment_for_the_order.html:451
+msgid "заказ номер: "
+msgstr "заказ номер: "
+
+#: templates/payment_for_the_order.html:466
+msgid "Номер картыㅤㅤㅤㅤㅤ"
+msgstr "Номер карты:"
+
+#: templates/payment_for_the_order.html:488
+msgid "ММ / ГГ"
+msgstr "ММ / ГГ"
+
+#: templates/payment_for_the_order.html:511
+msgid "Отправить квитанцию на E-mail"
+msgstr "Отправить квитанцию на E-mail"
+
+#: templates/payment_for_the_order.html:516
+msgid "Оплатить"
+msgstr "Оплатить"
+
+#: templates/payment_for_the_order.html:557
+msgid "назад"
+msgstr "назад"
+
+#: templates/payment_for_the_order.html:561
 msgid "Оплата через Telegram-бота"
 msgstr "Оплата через Telegram-бот"
 
-#: templates/payment_for_the_order.html:28
+#: templates/payment_for_the_order.html:564
 msgid "Для оплаты вашего заказа, выполните следующие шаги:"
 msgstr "Для оплаты вашего заказа выполните следующие шаги:"
 
-#: templates/payment_for_the_order.html:32
+#: templates/payment_for_the_order.html:568
 msgid "Перейдите в Telegram-бота по ссылке:"
 msgstr "Перейдите в Telegram-бот по ссылке:"
 
-#: templates/payment_for_the_order.html:33
+#: templates/payment_for_the_order.html:569
 msgid "Нажмите 'Старт' и выберите 'Оплатить заказ'."
 msgstr "Нажмите «Старт» и выберите «Оплатить заказ»."
 
-#: templates/payment_for_the_order.html:34
+#: templates/payment_for_the_order.html:570
 msgid "Введите ID (номер) заказа:"
 msgstr "Введите ID (номер) заказа:"
 
-#: templates/payment_for_the_order.html:35
+#: templates/payment_for_the_order.html:571
 msgid "Оплатите заказ через Stars (Звёзды)."
 msgstr "Оплатите заказ с помощью Stars (Звёзды)."
 
-#: templates/payment_for_the_order.html:39
+#: templates/payment_for_the_order.html:575
 msgid "Перейти в Telegram-бота"
 msgstr "Перейти в Telegram-бот"
 
@@ -2985,6 +3069,12 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#~ msgid "Введіть вашу адрессу"
+#~ msgstr "Введите ваш адрес"
+
+#~ msgid "MSK Shop - Оплата через Telegram"
+#~ msgstr "MSK Shop - Оплата через Telegram"
+
 #~ msgid ""
 #~ "Откройте свой почтовый клиент для связи с нами. \\nНаша почта: "
 #~ "support@msk52.shop"
@@ -3000,9 +3090,6 @@ msgstr ""
 
 #~ msgid "Будь ласка, здійсніть платіж за наступними реквізитами:"
 #~ msgstr "Пожалуйста, осуществите платеж по следующим реквизитам:"
-
-#~ msgid "Номер картки:"
-#~ msgstr "Номер карты:"
 
 #~ msgid "Отримувач:"
 #~ msgstr "Получатель:"

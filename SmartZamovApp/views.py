@@ -430,7 +430,7 @@ def PaswordSuccessfullyChanged(request):
     return redirect(request.META.get('HTTP_REFERER', 'index'))
 
 def PasswordResetDone(request):
-    messages.success(request, _('Ми відправили вам інструкції для скидання пароля на вказану вами електронну адресу.'))
+    messages.success(request, _('Ми надіслали інструкції для скидання пароля на вказану вами електронну адресу. Якщо ви не бачите нашого листа, будь ласка, перевірте папку "Спам".'))
     return redirect('index')
 
 def CartAdd(request, slug):
@@ -613,6 +613,17 @@ def PayForOrder(request, id):
     if target_order.is_paid == True:
         return redirect('PaymentSucess')
     
+    if target_order.status != 'Waiting_for_payment':
+        messages.success(request, _('Вы не заполнили информацию о заказе!'))
+        return redirect(request.META.get('HTTP_REFERER', 'index'))
+    
+    if target_order.due_for_payment_now == target_order.due_for_payment_now_ru:
+        currency = "₽"
+    elif target_order.due_for_payment_now == target_order.due_for_payment_now_de:
+        currency = "€"
+    elif target_order.due_for_payment_now == target_order.due_for_payment_now_de:
+        currency = "$"
+    
     cart = get_cart(request)
     unread_messages = get_unread(request)
 
@@ -628,7 +639,7 @@ def PayForOrder(request, id):
             message.save()
             return redirect('orders')
 
-    return render(request, 'payment_for_the_order.html', {"cart": cart, "unread_messages": unread_messages, "target_order": target_order})
+    return render(request, 'payment_for_the_order.html', {"cart": cart, "unread_messages": unread_messages, "target_order": target_order, "currency": currency})
 
 def ViewMessages(request):
     if not request.user.is_authenticated:

@@ -15,12 +15,12 @@ class ChangeUserData(forms.ModelForm):
     last_name = forms.CharField(label=_("Фамілія користувача: "), required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':  _("Введіть вашу фамілію")}))    
     patronymic = forms.CharField(label=_("По батькові: "), required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder':  _("По батькові")}))    
     phone_number = forms.CharField(label=_("Номер телефону: "), required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Введіть ваш номер телефону")}))    
-    adress = forms.CharField(label=_("Адреса (Область, місто, вулиця): "),required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Введіть вашу адрессу")}))
+    adress = forms.CharField(label=_("Адрес (Область, город, слово 'улица' + название улицы + номер дома): "),required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Московская область, Москва, улица Тверская 10.")}))
 
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']
         if not first_name:
-            return first_name
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
         if not first_name.isalpha():
             raise(ValidationError(_("Ім'я не повинно містити цифр")))
         if len(first_name) < 2:
@@ -30,7 +30,7 @@ class ChangeUserData(forms.ModelForm):
     def clean_last_name(self):
         last_name = self.cleaned_data['last_name']
         if not last_name:
-            return last_name
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
         if not last_name.isalpha():
             raise(ValidationError(_("Фамілія не повинна містити цифр")))
         if len(last_name) < 2:
@@ -40,7 +40,7 @@ class ChangeUserData(forms.ModelForm):
     def clean_patronymic(self):
         patronymic = self.cleaned_data['patronymic']
         if not patronymic:
-            return patronymic
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
         if not patronymic.isalpha():
             raise(ValidationError(_("По батькові не повинно містити цифр")))
         if len(patronymic) < 2:
@@ -50,13 +50,30 @@ class ChangeUserData(forms.ModelForm):
     def clean_adress(self):
         adress = self.cleaned_data['adress']
         if not adress:
-            return adress
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
+    
         parts = [part.strip() for part in adress.split(",")]
+        
         if len(parts) != 3:
-            raise ValidationError(_("Будь ласка, введіть адресу у вказаному форматі"))
-        for part in parts:
-            if len(part) < 4 or not part.isalpha():
-                raise ValidationError(_("Будь ласка, введіть коректну адресу"))
+            raise ValidationError(_("Формат адреса неверный. Пожалуйста, введите адрес в следующем формате: (Область, город, слово 'улица' + название улицы + номер дома). Плюсики и другие символы не используются. Пример: Московская область, Москва, улица Тверская 10."))
+    
+        for i, part in enumerate(parts):
+            if i == 0:
+                if len(part) < 3 or not part.isalpha():
+                    raise ValidationError(_("Название области должно содержать только буквы и быть длиннее двух символов."))
+            elif i == 1:
+                if len(part) < 3 or not part.isalpha():
+                    raise ValidationError(_("Название города должно содержать только буквы и быть длиннее двух символов."))
+            elif i == 2:
+                if 'улица' not in part.lower():
+                    raise ValidationError(_("Необходимо указать слово 'улица' в названии улицы."))
+                parts_of_address = part.lower().split("улица")
+                if len(parts_of_address) != 2 or not parts_of_address[1].strip():
+                    raise ValidationError(_("После слова 'улица' должно следовать название улицы и номер дома."))
+                street, house = parts_of_address[1].strip().split(" ", 1)
+                if not house.isdigit():
+                    raise ValidationError(_("Номер дома должен быть числом."))
+    
         return adress
         
     class Meta:

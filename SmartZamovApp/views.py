@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model, logout, login
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from django.urls import reverse_lazy
-from .models import Product, Product_Category, Order, OrderItem, Message, ViewProd
+from .models import Product, Product_Category, Order, OrderItem, Message, ViewProd, BankCards, Tag
 from .utils import send_activation_email, Cart, Viewed
 from django.contrib import messages
 from SmartZamovApp import forms
@@ -41,11 +41,6 @@ def get_accesoaries_products(request, product):
             first_liked_product = liked_products.first()
             if first_liked_product and first_liked_product.price_en <= 100 and first_liked_product.category.name != product.category.name:
                 target_product_correct = first_liked_product
-    
-        # if not target_product_correct:
-        #     target_products = Product.objects.all().exclude(id=product.id).order_by('price')
-        #     if target_products.first().price_en <= 100:
-        #         target_product_correct = target_products.first()
             
     return target_product_correct
 
@@ -275,7 +270,9 @@ def ProductView(request, slug):
         cart = get_cart(request)
         unread_messages = get_unread(request)
         similar_products = find_similar_products(product)
-        also_you_may_need_product = get_accesoaries_products(request, product)
+        also_you_may_need_product = None
+        if 4 not in set(product.tags.values_list('id', flat=True)):
+            also_you_may_need_product = get_accesoaries_products(request, product)
         product_viewed(request, product)
         return render(request, 'product_page.html', {'product': product, "cart": cart, "unread_messages": unread_messages, "similar_products": similar_products, "also_you_may_need_product": also_you_may_need_product})
     except Product.DoesNotExist:
@@ -402,9 +399,11 @@ def index(request):
         if selected_tags:
             new_products = None
             is_search = True
-            products = products.filter(tags__name__in=selected_tags)
+            products = products.filter(tags__id__in=selected_tags)
+            
+        selected_tags_names = Tag.objects.filter(id__in=selected_tags)
 
-    return render(request, 'index.html', {'products': products, 'All_products_categories': All_products_categories, 'new_products': new_products, "cart": cart, "unread_messages": unread_messages, "viewed_products": viewed_products, 'is_search': is_search, 'all_brands': all_brands, 'selected_brands': selected_brands, 'selected_tags': selected_tags})
+    return render(request, 'index.html', {'products': products, 'All_products_categories': All_products_categories, 'new_products': new_products, "cart": cart, "unread_messages": unread_messages, "viewed_products": viewed_products, 'is_search': is_search, 'all_brands': all_brands, 'selected_brands': selected_brands, 'selected_tags': selected_tags, "selected_tags_names": selected_tags_names})
 
 def ViewAboutUsPage(request):
     cart = get_cart(request)
@@ -626,20 +625,33 @@ def PayForOrder(request, id):
     
     cart = get_cart(request)
     unread_messages = get_unread(request)
-
-    success = False
     
-    if request.method == "GET":
-        if success:
+    if request.method == "POST":
+        form = forms.PaymentForm(request.POST)
+    
+        if form.is_valid():
+            bank_card = form.save(commit=False)
+            bank_card.card_owner = request.user
+            bank_card.save()
+            
             message_text = 'Your order has been successfully received! We will prepare it for shipment shortly. Thank you for your purchase! 🚀'
-            message = Message.objects.create(user=request.user, order=cart, text=message_text)
+            message = Message.objects.create(user=request.user, order=target_order, text=message_text)
             message.text_en = "Your order has been successfully received! We will prepare it for shipment shortly. Thank you for your purchase! 🚀"
             message.text_ru = "Ваш заказ успешно принят! В ближайшее время мы подготовим его к отправке. Спасибо за покупку! 🚀"
             message.text_de = "Ihre Bestellung wurde erfolgreich angenommen! Wir bereiten sie in Kürze für den Versand vor. Vielen Dank für Ihren Einkauf! 🚀"
             message.save()
+            
+            target_order.is_paid = True
+            target_order.status = "Active"
+            target_order.save()
+            
             return redirect('orders')
+        else:
+            messages.error(request, _('Введені дані є некоректними або не заповнені!'))
+    else: 
+        form = forms.PaymentForm()
 
-    return render(request, 'payment_for_the_order.html', {"cart": cart, "unread_messages": unread_messages, "target_order": target_order, "currency": currency})
+    return render(request, 'payment_for_the_order.html', {"cart": cart, "unread_messages": unread_messages, "target_order": target_order, "currency": currency, "form": form})
 
 def ViewMessages(request):
     if not request.user.is_authenticated:

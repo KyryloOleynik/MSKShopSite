@@ -28,6 +28,7 @@
                         <div class="list-group mb-3 rounded-3">
                             <input type="hidden" name="requestToSearch" value="{{ request.GET.requestToSearch }}">
                             <input type="hidden" name="category" value="{{ request.GET.category }}">
+                            <input type="hidden" name="tag" value="{{ request.GET.tag }}">
                             {% for product_category in All_products_categories %}
                                 <a href="?category={% if request.GET.category == product_category.slug %}{% else %}{{ product_category.slug }}{% endif %}&sort_by={{ request.GET.sort_by }}&order={{ request.GET.order }}&requestToSearch={{ request.GET.requestToSearch }}&available={{ request.GET.available }}{% for brand in selected_brands %}&brand={{ brand }}{% endfor %}{% for tag in selected_tags %}&tag={{ tag }}{% endfor %}" class="list-group-item list-group-item-action {% if request.GET.category == product_category.slug %}active{% endif %}">
                                     {{ product_category.name }}
@@ -209,12 +210,13 @@
             {% endif %}
             
             {% if is_search %}
-                {% if selected_tags %}
+                {% if selected_tags_names %}
                     <div class="d-flex flex-wrap my-1">
-                        {% for tag in selected_tags %}
+                        {% for tag in selected_tags_names %}
                             <span class="badge rounded-pill bg-light text-muted border me-2 mb-2 d-flex align-items-center">
                                 {{ tag }}
                                 <button type="button" class="btn-close ms-2" aria-label="Удалить"></button>
+                                <span class="tag_id" style="display: none;">{{ tag.id }}</span>
                             </span>
                         {% endfor %}
                     </div>
@@ -359,7 +361,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".badge .btn-close").forEach(button => {
             button.addEventListener("click", function () {
-                let tagElement = this.parentElement;
+                let tagElement = this.parentElement.querySelector('.tag_id');
                 let tagText = tagElement.textContent.trim();
                 
                 let params = new URLSearchParams(window.location.search);

@@ -1,6 +1,5 @@
-/* Мобільне меню */
 .mobile-menu {
-    display: none; /* За замовчуванням приховане */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -27,7 +26,7 @@
     border: none;
     font-size: 1.5rem;
     color: #000;
-    z-index: 1051; /* Щоб кнопка була поверх іншого контенту */
+    z-index: 1051; 
 }
 
 .close-menu:hover {
@@ -39,7 +38,6 @@
     transform: scale(0.9);
 }
 
-/* Контейнер для пошуку, кнопок і мови */
 .mobile-menu-content {
     display: flex;
     flex-direction: column;
@@ -47,12 +45,11 @@
     width: 100%;
 }
 
-/* Вирівнювання форми пошуку */
 .mobile-menu form {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 500px; /* Обмежуємо ширину форми */
+    max-width: 500px;
     margin-top: 1rem;
 }
 
@@ -67,4 +64,14 @@
 
 .language-switcher-mobile button {
     margin: 0.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }

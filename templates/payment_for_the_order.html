@@ -9,23 +9,11 @@
     <link rel="shortcut icon" href="{% static '/img/logo_min.png' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/adaptive.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .paymentLogos{
-            width: 15%; 
-            height: 100%;
-        }
-        .paymentLogos img{
-            position: absolute;
-            right: 15px;
-            top: 5px;
-            margin-bottom: 0 !important;
-        }
-        /* Кнопка закрытия (крестик) */
         .btn-close {
             display: flex;
             position: relative;
@@ -33,7 +21,7 @@
             background: transparent;
             border: none;
             padding: 0;
-            font-size: 3rem;
+            font-size: 2.3rem !important;
             color: #6c757d;
             transition: color 0.2s, transform 0.2s;
             justify-content: flex-end;
@@ -43,384 +31,33 @@
             color: #495057;
         }
         
-        /* На больших экранах позиционируем крестик справа от формы */
         @media (min-width: 551px) {
             .btn-close {
                 position: absolute;
                 right: -53px;
                 padding: 0;
+                font-size: 3rem !important;
+                padding-top: 0.35rem;
                 transform: translateY(-50%);
             }
         }
-        @media(max-height: 720px){
-            #blueOverlay{
-                align-items: unset !important;
-            }
-        }
-        @media(min-width: 992px){
-            #telegramPayment .card-title{
-                margin-top: 0 !important;
-            }
-        }
-        @media(max-width: 550px){
-            .card-payment-form{
-                min-height: 100vh !important;
-                padding-top: 0 !important;
-                padding-bottom: 3.5rem !important;
-            }
-            #blueOverlay{
-                align-items: unset !important;
-            }
-        }        
-        @media(max-width: 495px){
-            .card-payment-form{
-                width: 100% !important;
-                border-radius: 0px !important;
-            }
-        }
-        .floating-input {
-            position: relative;
-            background-color: #fff;
-            border-top: 2px solid #e5e9f0;
-            padding: 16px 12px 4px 12px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-        .floating-input input {
-            width: 100%;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 4px 0 2px;
-            background: transparent;
-            font-family: inherit;
-        }
         
-        .floating-input input:focus + label,
-        .floating-input input:not(:placeholder-shown) + label,
-        .floating-input input:valid + label {
-            top: 6px;
-            left: 8px !important;
-            padding-bottom: 0px !important;
-            font-size: 12px;
-            color: #323a4e;
-        }
-        
-        .floating-input label {
-            position: absolute;
-            left: 12px;
-            top: 13px;
-            color: #888;
-            font-size: 1rem;
-            padding-bottom: 10px !important;
-            pointer-events: none;
-            transition: 0.2s ease all;
-            background: white;
-            padding: 0 4px;
-            width: 70%;
-            display: flex;
-            justify-content: flex-start;
-        }
-        
-        /* Убираем автозаполнение жёлтого цвета в Chrome */
         input:-webkit-autofill {
-            box-shadow: 0 0 0px 1000px white inset !important;
-        }
-        
-        /* Подправка позиции иконки CVV */
-        .floating-input.cvv-wrapper {
-            position: relative;
-            padding-right: 40px;
-        }
-        .floating-input .toggle-visibility {
-            position: absolute;
-            top: 51%;
-            right: 13px;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #888;
-            font-size: 1.1rem;
-        }
-        /* Иконки TUI */
-        tui-icon {
-            position: relative;
-            display: inline-block;
-            inline-size: 1em;
-            block-size: 1em;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            vertical-align: middle;
-            box-sizing: border-box;
-            -webkit-mask: var(--t-icon-bg) no-repeat center / contain;
-            mask: var(--t-icon-bg) no-repeat center / contain;
-        }
-        
-        tui-icon:after,
-        tui-icon[tuiIcons]:after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            display: block;
-            -webkit-mask: var(--t-icon) no-repeat center / contain;
-            mask: var(--t-icon) no-repeat center / contain;
-            -webkit-mask-composite: source-in, xor;
-            mask-composite: intersect;
-            background: currentColor;
-        }
-        
-        /* Отступы */
-        .tui-space_top-8 {
-            margin-top: 2rem;
-        }
-        .tui-space_top-6 {
-            margin-top: 1.5rem;
-        }
-        
-        /* Иконки */
-        .icons-container,
-        .network-icon {
-            filter: brightness(0) saturate(100%) invert(93%) sepia(6%) saturate(513%) hue-rotate(177deg) brightness(88%) contrast(88%);
-        }
-        .icons-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .network-icon_not-loaded {
-            display: none;
-        }
-        
-        /* Контент */
-        .widget-box__content {
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-            text-align: left;
-        }
-        
-        #paymentSelection {
-            margin-top: 50px;
-        }
-        
-        #cardPaymentModal {
-            font-family: "Roboto", "Segoe UI", "Helvetica Neue", sans-serif !important;
-            color: #222d41;
-        }
-        
-        /* Кнопки выбора */
-        .selection-btn {
-            transition: transform 0.2s;
-        }
-        .selection-btn:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Контейнер карты */
-        .card-input-block {
-            width: 100%;
-            margin: 0 auto;
-            border: 2px solid #e5e9f0;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #fff;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        
-        .card-input-label {
-            font-size: 14px;
-            font-weight: 500;
-            color: #666;
-            margin-bottom: 4px;
-            display: block;
-        }
-        
-        .card-number-input,
-        .card-expiry-input,
-        .card-cvv-input {
-            width: 100%;
-            padding: 10px 12px;
-            font-size: 16px;
-            border: 2px solid #e5e9f0;
-            border-radius: 4px;
-            outline: none;
-            box-sizing: border-box;
-        }
-        
-        .card-input-bottom {
-            display: flex;
-        }
-        
-        .card-expiry,
-        .card-cvv {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        /* Форма оплаты */
-        .card-payment-form {
-            width: 454px;
-            min-height: max-content;
-            background: #f6faff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .card-payment-form img {
-            max-width: 120px;
-            margin-bottom: 10px;
-        }
-        
-        .card-payment-form h2 {
-            font-size: 16px;
-            font-family: inherit;
-            color: #233157;
-        }
-        
-        .card-payment-form .price {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 10px 0;
-            color: #242d42;
-        }
-        
-        .floating-input:focus-within {
-            border-color: #0082fb;
-        }
-        
-        .card-payment-form .input-group {
-            text-align: left;
-        }
-        
-        .card-payment-form .input-group:focus-within {
-            border-color: #0082fb;
-        }
-        
-        .card-payment-form .input-group label {
-            font-size: 14px;
-            color: #d3d3d3;
-        }
-        
-        .card-payment-form .input-group input {
-            width: 100%;
-            padding: 8px;
-            font-size: 16px;
-            border: 2px solid #e5e9f0;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-        
-        .card-payment-form .email-group {
-            margin-top: 0.9em;
-            margin-bottom: 0.5em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .email-group label{
-            color: #8e95a0;
-        }
-        
-        .card-payment-form .email-group input[type="checkbox"] {
-            margin-right: 10px;
-            border: 2px solid #e5e9f0;
-        }
-        
-        .card-payment-form .pay-button {
-            background: #3f72ff;
-            color: white;
-            font-size: 16px;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 1.2rem;
-        }
-        
-        /* Кнопка "назад" */
-        .btn-back {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: transparent;
-            border: none;
-            font-size: 0.9rem;
-            cursor: pointer;
-            color: #6c757d;
-            display: flex;
-            align-items: center;
-            transition: color 0.2s, transform 0.2s;
-        }
-        .btn-back i {
-            font-size: 1rem;
-            margin-right: 3px;
-        }
-        .btn-back:hover {
-            color: #495057;
-            transform: translateX(-3px);
-        }
-        
-        /* Модалка и оверлей */
-        #blueOverlay {
-            overflow-y: auto;
-            min-height: 100vh;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .blue-background {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 38, 255, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 1;
-        }
-        
-        #cardPaymentModal {
-            max-width: 100%;
-            position: relative;
-            z-index: 2;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        /* Спиннер */
-        .spinner {
-            width: 80px;
-            height: 80px;
-            border: 8px solid #fff;
-            border-top: 8px solid #007bff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        body.modal-open {
-            overflow: hidden;
+            background-color: transparent !important;
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+            -webkit-text-fill-color: inherit !important;
+            transition: background-color 9999s ease-out, color 9999s ease-out;
         }
     </style>
 </head>
 <body>
 {% include "base_menu.html" %}
+
+<div id="errorMessagesTranslates" 
+     data-email="{% trans 'Некорректный E-mail' %}" 
+     data-card-number="{% trans 'Некорректный номер карты' %}" 
+     data-card-date="{% trans 'Некорректная дата' %}">
+</div>
 
 <div id="blueOverlay">
     <div class="blue-background"></div>
@@ -445,8 +82,9 @@
 </div>
 
 <div class="container mt-5" id="cardPayment" style="display: none;">
-    <div class="card-payment-form animate__animated animate__fadeIn">
-        <button class="btn-close backToMenu">
+    <form class="card-payment-form animate__animated animate__fadeIn" id="cardPaymentForm" method="POST">
+        {% csrf_token %}
+        <button class="btn-close backToMenu" type="button">
             <i class="bi bi-x"></i>
         </button>
         <div class="row justify-content-center row-cols-2 row-cols-md-1 row-cols-lg-2 mt-4">
@@ -459,55 +97,32 @@
         <h2>{% trans "Вы оплачиваете" %}<br>{% trans "заказ номер: " %}{{ target_order.id }}</h2>
         <div class="price">{{ target_order.due_for_payment_now }} {{ currency }}</div>
         <div class="card-input-block">
-            <div class="floating-input" style="border: 0px solid; display: flex;">
-                <input 
-                    style="width: 85%; display: flex;"
-                    type="text"
-                    id="CardNumber"
-                    class="card-number-input"
-                    pattern="\d*" 
-                    inputmode="numeric" 
-                    maxlength="19"
-                    placeholder="0000 0000 0000 0000"
-                    required
-                >
-                <label for="CardNumber">{% trans "Номер карты" %}</label>
-                
-                <div class="paymentLogos">
-                    <img id="visaLogo" src="{% static '/img/visa-svgrepo-com.svg' %}" alt="Visa" style="display: none; width: 40px;">
-                    <img id="mastercardLogo" src="{% static '/img/mastercard.svg' %}" alt="MasterCard" style="display: none; width: 40px;">
-                    <img id="MIRLogo" src="{% static '/img/mir-logo.svg' %}" alt="MIR" style="display: none; width: 40px; top: unset; bottom: 19px;">
+            <div class="card-number">
+                <div class="floating-input" style="border: 0px solid; display: flex;">
+                    {{ form.card_number }}
+                    <label for="CardNumber">{% trans "Номер карты" %}</label>
+                    
+                    <div class="paymentLogos">
+                        <img id="visaLogo" src="{% static '/img/visa-svgrepo-com.svg' %}" alt="Visa" style="display: none; width: 30px;">
+                        <img id="mastercardLogo" src="{% static '/img/mastercard.svg' %}" alt="MasterCard" style="display: none; width: 30px;">
+                        <img id="MIRLogo" src="{% static '/img/mir-logo.svg' %}" alt="MIR" style="display: none; width: 40px; top: unset; bottom: 19px;">
+                    </div>
+                </div>
+                <div id="CardFieldErrors">
+                    {{ form.card_number.errors }}
                 </div>
             </div>
-
+            
             <div class="card-input-bottom">
                 <div class="card-expiry">
                     <div class="floating-input" style="border-right: 2px solid #e5e9f0;">
-                        <input 
-                          type="text"
-                          id="cardDate"
-                          class="card-expiry-input"
-                          pattern="\d*"
-                          inputmode="numeric"
-                          maxlength="7"
-                          placeholder="00 / 00"
-                          required
-                        >
+                        {{ form.card_expiry }}
                         <label for="cardDate">{% trans "ММ / ГГ" %}</label>
                     </div>
                 </div>
                 <div class="card-cvv">
                     <div class="floating-input cvv-wrapper">
-                        <input
-                          type="password"
-                          id="cardCvv"
-                          class="card-cvv-input"
-                          maxlength="3"
-                          pattern="\d*"
-                          inputmode="numeric"
-                          placeholder="000"
-                          required
-                        >
+                        {{ form.card_cvv }}
                         <label for="cardCvv">CVV</label>
                         <i class="bi bi-eye-slash toggle-visibility"></i>
                     </div>
@@ -519,9 +134,10 @@
             <label>{% trans "Отправить квитанцию на E-mail" %}</label>
         </div>
         <div class="input-group">
-            <input type="email" placeholder="d@cloudpayments.ru">
+            <input type="email" id="emailInput" placeholder="d@cloudpayments.ru">
+            <label for="emailInput">E-mail</label>
         </div>
-        <button class="pay-button">{% trans "Оплатить" %} {{ target_order.due_for_payment_now }} {{ currency }}</button>
+        <button type="submit" id="PayForOrderButton" class="pay-button">{% trans "Оплатить" %} {{ target_order.due_for_payment_now }} {{ currency }}</button>
         <div class="icons-container tui-space_top-8">
                 <!-- Secure Connection Icon -->
                 <tui-icon style="width: 56px; height: 14px; --t-icon: url(https://widget.cloudpayments.ru/next/remotes/payment-module/assets/icons/secure-systems/secure-connection-icon.svg);"></tui-icon>
@@ -553,7 +169,7 @@
         
         <tui-icon class="ng-star-inserted tui-space_top-6" style="width: 170px; color: rgb(255, 255, 255); background: rgb(192, 201, 212); --t-icon: url(https://widget.cloudpayments.ru/next/remotes/payment-module/assets/icons/front-cp-footer-logo.svg); --t-icon-bg: url(https://widget.cloudpayments.ru/next/remotes/payment-module/assets/icons/cp-footer-logo.svg);">
         </tui-icon>
-    </div>
+    </form>
 </div>
 
 <!-- Блок оплаты через Telegram -->
@@ -590,96 +206,9 @@
 
 {% include "footer.html" %}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+Yx1Y3zUknj0g6fQ2ztpG5Hf0U8Q+" 
-        crossorigin="anonymous"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const selectionDiv = document.getElementById('paymentSelection');
-    const telegramPaymentDiv = document.getElementById('telegramPayment');
-    const cardPaymentDiv = document.getElementById('cardPayment');
-    const blueOverlay = document.getElementById('blueOverlay');
-    const cardPaymentModal = document.getElementById('cardPaymentModal');
-
-    document.getElementById('btnCard').addEventListener('click', function() {
-        blueOverlay.style.display = 'flex';
-        document.body.classList.add('modal-open');
-
-        cardPaymentModal.innerHTML = '<div style="height: 100%; display: flex; align-items: center;"><div class="spinner"></div></div>';
-        
-        setTimeout(() => {
-            cardPaymentModal.innerHTML = cardPaymentDiv.innerHTML;
-
-            cardPaymentModal.querySelectorAll('.backToMenu').forEach(elem => {
-                elem.addEventListener('click', function() {
-                    blueOverlay.style.display = 'none';
-                    document.body.classList.remove('modal-open');
-                    selectionDiv.style.display = 'block';
-                });
-            });
-            
-        }, 1500);
-    });
-
-    document.getElementById('btnTelegram').addEventListener('click', function() {
-        selectionDiv.style.display = 'none';
-        telegramPaymentDiv.style.display = 'block';
-    });
-    
-    document.querySelectorAll('.backToMenu').forEach(elem => {
-        elem.addEventListener('click', function() {
-            blueOverlay.style.display = 'none';
-            document.body.classList.remove('modal-open');
-            cardPaymentDiv.style.display = 'none';
-            telegramPaymentDiv.style.display = 'none';
-            selectionDiv.style.display = 'block';
-        });
-    });
-    
-    document.addEventListener('input', function(e) {
-        if (e.target.id === 'CardNumber') {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.slice(0, 16);
-            let formatted = value.match(/.{1,4}/g);
-            e.target.value = formatted ? formatted.join(' ') : '';
-            
-            document.getElementById('visaLogo').style.display = 'none';
-            document.getElementById('mastercardLogo').style.display = 'none';
-            document.getElementById('MIRLogo').style.display = 'none';
-    
-            if (value.startsWith('4')) {
-                document.getElementById('visaLogo').style.display = 'inline'; 
-            } else if (value.startsWith('5') || (parseInt(value.substring(0, 4)) >= 2221 && parseInt(value.substring(0, 4)) <= 2720)) {
-                document.getElementById('mastercardLogo').style.display = 'inline'; 
-            } else if (value.substring(0, 4) >= '2200' && value.substring(0, 4) <= '2204'){
-                document.getElementById('MIRLogo').style.display = 'inline';
-            }
-        }
-        if (e.target.id === 'cardDate') {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 3) {
-                value = value.substring(0, 2) + ' / ' + value.substring(2, 4);
-            }
-            e.target.value = value;
-        }
-    });
-    document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('toggle-visibility')) {
-        const cvvInput = document.getElementById('cardCvv');
-        if (cvvInput.type === 'password') {
-          cvvInput.type = 'text';
-          e.target.classList.remove('bi-eye-slash');
-          e.target.classList.add('bi-eye');
-        } else {
-          cvvInput.type = 'password';
-          e.target.classList.remove('bi-eye');
-          e.target.classList.add('bi-eye-slash');
-        }
-      }
-    });
-});
-</script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="{% static 'js/payment_scripts.js' %}"></script>
+<script type="module" src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

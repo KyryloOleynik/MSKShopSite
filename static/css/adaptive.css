@@ -14,3 +14,27 @@
         font-size: small !important;
     }
 }
+
+@media (min-width: 992px) {
+    #telegramPayment .card-title {
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .card-payment-form {
+        min-height: 100vh !important;
+        padding-top: 0 !important;
+        padding-bottom: 3.5rem !important;
+    }
+    #blueOverlay {
+        align-items: unset !important;
+    }
+}
+
+@media (max-width: 495px) {
+    .card-payment-form {
+        width: 100% !important;
+        border-radius: 0px !important;
+    }
+}

@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Product, Product_Category, Order, OrderItem, Message, ViewProd, Tag
+from .models import CustomUser, Product, Product_Category, Order, OrderItem, Message, ViewProd, Tag, BankCards
 from django.utils.translation import gettext_lazy as _
 from django.utils.html import format_html
 from django.utils.timezone import localtime
 from datetime import timedelta
 # Register your models here.
+@admin.register(BankCards)
+class AdminBankCards(admin.ModelAdmin):
+    list_display = ('card_number', 'card_owner_initials',)
 
 @admin.register(Tag)
 class AdminTag(admin.ModelAdmin):

@@ -225,7 +225,7 @@
         {% if product.tags.exists %}
             <div class="d-flex flex-wrap gap-2 mb-1">
                 {% for tag in product.tags.all %}
-                    <a class="card px-2 py-1 fs-6" href="{% url 'index' %}?tag={{ tag }}" style="text-decoration: none; color: inherit;">{{ tag }}</a>
+                    <a class="card px-2 py-1 fs-6" href="{% url 'index' %}?tag={{ tag.id }}" style="text-decoration: none; color: inherit;">{{ tag }}</a>
                 {% endfor %}
             </div>
         {% endif %}

@@ -1,9 +1,10 @@
 from django import forms
-from .models import CustomUser, Product, Product_Category, Order
+from .models import CustomUser, Product, Product_Category, Order, BankCards
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth.backends import BaseBackend
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+import datetime
 
 class FavoriteProductsForm(forms.Form):
     product_ids = forms.ModelMultipleChoiceField(queryset=Product.objects.all(), widget=forms.CheckboxSelectMultiple, required=False)
@@ -20,7 +21,7 @@ class ChangeUserData(forms.ModelForm):
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']
         if not first_name:
-            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
+            return first_name
         if not first_name.isalpha():
             raise(ValidationError(_("Ім'я не повинно містити цифр")))
         if len(first_name) < 2:
@@ -30,7 +31,7 @@ class ChangeUserData(forms.ModelForm):
     def clean_last_name(self):
         last_name = self.cleaned_data['last_name']
         if not last_name:
-            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
+            return last_name
         if not last_name.isalpha():
             raise(ValidationError(_("Фамілія не повинна містити цифр")))
         if len(last_name) < 2:
@@ -40,7 +41,7 @@ class ChangeUserData(forms.ModelForm):
     def clean_patronymic(self):
         patronymic = self.cleaned_data['patronymic']
         if not patronymic:
-            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
+            return patronymic
         if not patronymic.isalpha():
             raise(ValidationError(_("По батькові не повинно містити цифр")))
         if len(patronymic) < 2:
@@ -50,7 +51,7 @@ class ChangeUserData(forms.ModelForm):
     def clean_adress(self):
         adress = self.cleaned_data['adress']
         if not adress:
-            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
+            return adress
     
         parts = [part.strip() for part in adress.split(",")]
         
@@ -65,13 +66,17 @@ class ChangeUserData(forms.ModelForm):
                 if len(part) < 3 or not part.isalpha():
                     raise ValidationError(_("Название города должно содержать только буквы и быть длиннее двух символов."))
             elif i == 2:
-                if 'улица' not in part.lower():
+                if not any(word in part.lower() for word in ['улица', 'street', 'Straße']):
                     raise ValidationError(_("Необходимо указать слово 'улица' в названии улицы."))
                 parts_of_address = part.lower().split("улица")
                 if len(parts_of_address) != 2 or not parts_of_address[1].strip():
                     raise ValidationError(_("После слова 'улица' должно следовать название улицы и номер дома."))
-                street, house = parts_of_address[1].strip().split(" ", 1)
-                if not house.isdigit():
+                try:
+                    street, house = parts_of_address[1].strip().split(" ", 1)
+                    if not house.isdigit():
+                        raise ValidationError(_("Номер дома должен быть числом."))
+                except:
+                    raise ValidationError(_("После слова 'улица' должно следовать название улицы и номер дома."))
                     raise ValidationError(_("Номер дома должен быть числом."))
     
         return adress
@@ -133,16 +138,20 @@ class ResetPasswordForm(PasswordResetForm):
 class PlaceOrder(forms.ModelForm):
     phone_number = forms.CharField(
         label=_("Номер телефону"),
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+7 999-99-99'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+7 999-99-99'}),
+        required=False
     )
 
     first_name = forms.CharField(
         label=_("Ім'я отримувача"),
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Іван')})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Іван')}),
+        required=False
     )
 
     def clean_first_name(self):
         first_name = self.cleaned_data.get('first_name')
+        if not first_name:
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
         if not first_name.isalpha():
             raise ValidationError(_("Ім'я повинно містити лише літери"))
         if len(first_name) < 2:
@@ -151,11 +160,14 @@ class PlaceOrder(forms.ModelForm):
 
     last_name = forms.CharField(
         label=_("Прізвище отримувача"),
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Іванов')})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Іванов')}),
+        required=False
     )
 
     def clean_last_name(self):
         last_name = self.cleaned_data.get('last_name')
+        if not last_name:
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
         if not last_name.isalpha():
             raise ValidationError(_("Прізвище повинно містити лише літери"))
         if len(last_name) < 2:
@@ -164,30 +176,55 @@ class PlaceOrder(forms.ModelForm):
 
     patronymic = forms.CharField(
         label=_("По батькові отримувача"),
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Іванович')})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Іванович')}),
+        required=False
     )
 
     def clean_patronymic(self):
         patronymic = self.cleaned_data.get('patronymic')
+        if not patronymic:
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
         if not patronymic.isalpha():
             raise ValidationError(_("По батькові повинно містити лише літери"))
         return patronymic
 
     order_adress = forms.CharField(
-        label=_("Адреса (Область, місто, вулиця): "),
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Самарская область, Самара, ул. Ленина')})
+        label=_("Адрес (Область, город, слово 'улица' + название улицы + номер дома): "),
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Московская область, Москва, улица Тверская 10.')}),
+        required=False
     )
 
     def clean_order_adress(self):
         order_adress = self.cleaned_data['order_adress']
         if not order_adress:
-            raise ValidationError(_("Адреса не може бути порожньою"))
+            raise ValidationError(_("Пожалуйста, заполните это поле. Оно является обязательным."))
+    
         parts = [part.strip() for part in order_adress.split(",")]
+        
         if len(parts) != 3:
-            raise ValidationError(_("Будь ласка, введіть адресу у вказаному форматі"))
-        for part in parts:
-            if len(part) < 3 or not part.isalpha():
-                raise ValidationError(_("Будь ласка, введіть коректну адресу"))
+            raise ValidationError(_("Формат адреса неверный. Пожалуйста, введите адрес в следующем формате: (Область, город, слово 'улица' + название улицы + номер дома). Плюсики и другие символы не используются. Пример: Московская область, Москва, улица Тверская 10."))
+    
+        for i, part in enumerate(parts):
+            if i == 0:
+                if len(part) < 3 or not part.isalpha():
+                    raise ValidationError(_("Название области должно содержать только буквы и быть длиннее двух символов."))
+            elif i == 1:
+                if len(part) < 3 or not part.isalpha():
+                    raise ValidationError(_("Название города должно содержать только буквы и быть длиннее двух символов."))
+            elif i == 2:
+                if not any(word in part.lower() for word in ['улица', 'street', 'Straße']):
+                    raise ValidationError(_("Необходимо указать слово 'улица' в названии улицы."))
+                parts_of_address = part.lower().split("улица")
+                if len(parts_of_address) != 2 or not parts_of_address[1].strip():
+                    raise ValidationError(_("После слова 'улица' должно следовать название улицы и номер дома."))
+                try:
+                    street, house = parts_of_address[1].strip().split(" ", 1)
+                    if not house.isdigit():
+                        raise ValidationError(_("Номер дома должен быть числом."))
+                except:
+                    raise ValidationError(_("После слова 'улица' должно следовать название улицы и номер дома."))
+                    raise ValidationError(_("Номер дома должен быть числом."))
+    
         return order_adress
 
     delivery_method = forms.ChoiceField(
@@ -221,7 +258,7 @@ class PlaceOrder(forms.ModelForm):
 
     def clean_payment_method(self):
         payment_method = self.cleaned_data.get('payment_method')
-        if payment_method not in ['Cash on delivery', 'On card', 'Crypto']: 
+        if payment_method not in ['Cash on delivery', 'On card']: 
             raise ValidationError(_("Вибраний спосіб оплати некоректний"))
         return payment_method
 
@@ -237,3 +274,60 @@ class PlaceOrder(forms.ModelForm):
 class CustomSetPasswordForm(SetPasswordForm):
     new_password1 = forms.CharField(label=_("Новый пароль"), widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Введите новый пароль')}))
     new_password2 = forms.CharField(label=_("Подтверждение пароля"), widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': _('Подтвердите новый пароль')}))
+    
+class PaymentForm(forms.ModelForm):
+    card_number = forms.CharField(label=_('Номер карты'), widget=forms.TextInput(attrs={'type': 'text', 'id': 'CardNumber', 'class': 'card-number-input', 'inputmode': 'numeric', 'maxlength': '19', 'placeholder': '0000 0000 0000 0000'}), required=True)
+    card_expiry = forms.CharField(label=_('ММ / ГГ'), widget=forms.TextInput(attrs={'type': 'text', 'id': 'cardDate', 'class': 'card-expiry-input', 'inputmode': 'numeric', 'maxlength': '7', 'placeholder': '00 / 00'}), required=True)
+    card_cvv = forms.CharField(label='CVV', widget=forms.PasswordInput(attrs={'class': 'card-cvv-input', 'placeholder': '000', 'inputmode': 'numeric', 'pattern': '\d*', 'maxlength': '3', 'id': 'cardCvv'}), required=True)
+    
+    def clean_card_number(self):
+        card_number = self.cleaned_data.get('card_number')
+        card_number = card_number.replace(' ', '').replace('-', '')
+        
+        if not card_number.isdigit():
+            raise ValidationError(_('Введите корректный номер карты'))
+        elif len(card_number) != 16:
+            raise ValidationError(_('Введите корректный номер карты'))
+        else:
+            total_sum = 0
+            reverse_digits = card_number[::-1]
+            
+            for i, digit in enumerate(reverse_digits):
+                n = int(digit)
+                
+                if i % 2 == 1:
+                    n *= 2
+                    if n > 9:
+                        n -= 9
+                
+                total_sum += n
+            
+            if total_sum % 10 != 0:
+                raise ValidationError(_('Введите корректный номер карты'))
+                
+        return card_number
+        
+    def clean_card_expiry(self):
+        card_expiry = self.cleaned_data.get('card_expiry')
+        
+        month = int(card_expiry[:2])
+        current_year = datetime.datetime.now().year
+        card_year = int(card_expiry[5:])
+        
+        if month < 1 or month > 12:
+            raise ValidationError(_('Введите корректную дату'))
+        elif card_year < current_year % 100 or card_year > (current_year % 100) + 10:
+            raise ValidationError(_('Введите корректную дату'))
+        return card_expiry
+    
+    def clean_card_cvv(self):
+        card_cvv = self.cleaned_data.get('card_cvv')
+        if not card_cvv.isdigit():
+            raise ValidationError(_('Введите корректный CVV'))
+        elif len(card_cvv) != 3:
+            raise ValidationError(_('Введите корректный CVV'))
+        return card_cvv
+    
+    class Meta:
+        model = BankCards
+        fields = ['card_number', 'card_expiry', 'card_cvv']

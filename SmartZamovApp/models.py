@@ -113,7 +113,7 @@ class CustomUser(AbstractUser):
         return self.last_name + " " + self.first_name + " " + self.patronymic
         
 class BankCards(models.Model):
-    card_number = models.CharField(max_length=16, unique=True, blank=False, null=False)
+    card_number = models.CharField(max_length=16, blank=False, null=False)
     card_expiry = models.CharField(max_length=7, help_text="MM / YY")
     card_cvv = models.CharField(max_length=3, blank=False, null=False) 
     card_owner = models.ForeignKey(CustomUser, related_name='owned_cards', on_delete=models.CASCADE)

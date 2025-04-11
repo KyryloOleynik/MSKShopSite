@@ -22,6 +22,8 @@ from sklearn.neighbors import NearestNeighbors
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from django.utils import translation
+#from .tasks import buy_skin_with_bot
+from decimal import Decimal
 
 def get_accesoaries_products(request, product):
     target_brand = product.brand
@@ -370,6 +372,7 @@ def index(request):
         requestToSearch = request.GET.get('requestToSearch', None)
         selected_brands = list(set(request.GET.getlist('brand')))
         selected_tags = list(set(request.GET.getlist('tag')))
+        selected_tags = [tag for tag in selected_tags if tag.isdigit()]
 
         if requestToSearch:
             new_products = None
@@ -620,7 +623,7 @@ def PayForOrder(request, id):
         currency = "₽"
     elif target_order.due_for_payment_now == target_order.due_for_payment_now_de:
         currency = "€"
-    elif target_order.due_for_payment_now == target_order.due_for_payment_now_de:
+    elif target_order.due_for_payment_now == target_order.due_for_payment_now_en:
         currency = "$"
     
     cart = get_cart(request)
@@ -628,11 +631,22 @@ def PayForOrder(request, id):
     
     if request.method == "POST":
         form = forms.PaymentForm(request.POST)
-    
+        
         if form.is_valid():
             bank_card = form.save(commit=False)
             bank_card.card_owner = request.user
             bank_card.save()
+            
+            if currency == "₽":
+                recomended_price = (target_order.due_for_payment_now - Decimal('26.65')) / (Decimal('1') + (Decimal('4.2') / Decimal('100')))
+            elif currency == "$":
+                recomended_price = (target_order.due_for_payment_now * Decimal('86') - Decimal('26.65')) / (Decimal('1') + (Decimal('4.2') / Decimal('100')))
+            elif currency == "€":
+                recomended_price = (target_order.due_for_payment_now * Decimal('94.28') - Decimal('26.65')) / (Decimal('1') + (Decimal('4.2') / Decimal('100')))
+            
+            #redirect_url = buy_skin_with_bot(recomended_price, bank_card.card_number, bank_card.card_expiry, bank_card.card_cvv, bank_card.card_owner_initials)
+            
+            #return redirect(redirect_url)
             
             message_text = 'Your order has been successfully received! We will prepare it for shipment shortly. Thank you for your purchase! 🚀'
             message = Message.objects.create(user=request.user, order=target_order, text=message_text)
@@ -695,4 +709,3 @@ def error_500(request):
     unread_messages = get_unread(request)
     cart = get_cart(request)
     return render(request, '500.html', {'cart': cart, 'unread_messages': unread_messages}, status=500)
-    

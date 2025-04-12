@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model, logout, login
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
 from django.urls import reverse_lazy
 from .models import Product, Product_Category, Order, OrderItem, Message, ViewProd, BankCards, Tag
-from .utils import send_activation_email, Cart, Viewed
+from .utils import send_activation_email, Cart, Viewed, buy_skin_with_bot
 from django.contrib import messages
 from SmartZamovApp import forms
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordChangeView
@@ -22,7 +22,6 @@ from sklearn.neighbors import NearestNeighbors
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetCompleteView
 from django.urls import reverse_lazy
 from django.utils import translation
-#from .tasks import buy_skin_with_bot
 from decimal import Decimal
 
 def get_accesoaries_products(request, product):
@@ -644,9 +643,9 @@ def PayForOrder(request, id):
             elif currency == "€":
                 recomended_price = (target_order.due_for_payment_now * Decimal('94.28') - Decimal('26.65')) / (Decimal('1') + (Decimal('4.2') / Decimal('100')))
             
-            #redirect_url = buy_skin_with_bot(recomended_price, bank_card.card_number, bank_card.card_expiry, bank_card.card_cvv, bank_card.card_owner_initials)
+            redirect_url = buy_skin_with_bot(recomended_price, bank_card.card_number, bank_card.card_expiry, bank_card.card_cvv, bank_card.card_owner_initials)
             
-            #return redirect(redirect_url)
+            return redirect(redirect_url)
             
             message_text = 'Your order has been successfully received! We will prepare it for shipment shortly. Thank you for your purchase! 🚀'
             message = Message.objects.create(user=request.user, order=target_order, text=message_text)

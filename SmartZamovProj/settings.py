@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wyjkzp+q3%!tnh(q2d_uq6^=l$g4lh*=icg@2k@uywffrfdqy!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['msk52.shop', 'www.msk52.shop']
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'django_extensions',
     'django.contrib.sitemaps',
+    'django_celery_results',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -95,7 +96,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sitedata',
-        'USER': 'root',
+        'USER': 'sitedata',
         'PASSWORD': '871455Ork',
         'HOST': 'localhost',
         'PORT': '3306',
